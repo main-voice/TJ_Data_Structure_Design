@@ -1,13 +1,13 @@
-/*ÏîÄ¿¾Å  ¶ş²æÅÅĞòÊı*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®ä¹  äºŒå‰æ’åºæ•°*/
+/**/
 
-//ÓÉÓÚ·ÅÔÚÒ»¸öcppÄÚ£¬ÂÔÏÔÁèÂÒ£¬mainº¯ÊıÎ»ÓÚ160ĞĞ×óÓÒ
+//ç”±äºæ”¾åœ¨ä¸€ä¸ªcppå†…ï¼Œç•¥æ˜¾å‡Œä¹±ï¼Œmainå‡½æ•°ä½äº160è¡Œå·¦å³
 
 #include <iostream>
 #include <string>
 #include <sstream>
 
-//Macro£¨ºê¶¨Òå£©
+//Macroï¼ˆå®å®šä¹‰ï¼‰
 #ifndef DefaultVisit
 	#define DefaultVisit 1
 #endif // !DefaultVisit
@@ -15,19 +15,19 @@
 #ifndef MaxChoice
 	#define MaxChoice 5
 #endif // !MaxChoice
-//ºê¶¨Òå½áÊø
+//å®å®šä¹‰ç»“æŸ
 
-//tool function£¨¹¤¾ßº¯ÊıÉùÃ÷£©
-void menu();//Êä³ö²Ëµ¥ĞÅÏ¢
-void checkChoice(int& choice);//¼ì²éÑ¡ÔñÊÇ·ñºÏ·¨
-void checkInput(int& input);//¼ì²éÊäÈëÊÇ·ñºÏ·¨
-bool isNumber(const std::string& src);//¸Ã×Ö·û´®ÊÇ·ñÎªÊı×Ö
+//tool functionï¼ˆå·¥å…·å‡½æ•°å£°æ˜ï¼‰
+void menu();//è¾“å‡ºèœå•ä¿¡æ¯
+void checkChoice(int& choice);//æ£€æŸ¥é€‰æ‹©æ˜¯å¦åˆæ³•
+void checkInput(int& input);//æ£€æŸ¥è¾“å…¥æ˜¯å¦åˆæ³•
+bool isNumber(const std::string& src);//è¯¥å­—ç¬¦ä¸²æ˜¯å¦ä¸ºæ•°å­—
 
-//¹¤¾ßº¯ÊıÉùÃ÷½áÊø
+//å·¥å…·å‡½æ•°å£°æ˜ç»“æŸ
 
 
-//Àà¶¨Òå
-class Log//ÓÃÓÚµ÷ÊÔÊä³öĞÅÏ¢µÄÀà,²»ĞèÒªÊµÀı»¯
+//ç±»å®šä¹‰
+class Log//ç”¨äºè°ƒè¯•è¾“å‡ºä¿¡æ¯çš„ç±»,ä¸éœ€è¦å®ä¾‹åŒ–
 {
 private:
 	Log() = delete;
@@ -50,10 +50,10 @@ public:
 };
 
 template<class T>
-class BinSortTree;//ËÑË÷¶ş²æÊ÷µÄÀàÉùÃ÷
+class BinSortTree;//æœç´¢äºŒå‰æ ‘çš„ç±»å£°æ˜
 
 template<class T>
-class BinSortTreeNode//Ê÷½Úµã¶¨Òå
+class BinSortTreeNode//æ ‘èŠ‚ç‚¹å®šä¹‰
 {
 	using pNode = BinSortTreeNode<T>*;
 	friend class BinSortTree<T>;
@@ -99,7 +99,7 @@ public:
 
 	void createTree();
 
-	//°Ñx²åÈëµ½×îĞ¡¶ş²æÊ÷ÖĞ
+	//æŠŠxæ’å…¥åˆ°æœ€å°äºŒå‰æ ‘ä¸­
 	bool Insert(const T& x);
 	bool Search(const T& x);
 	
@@ -138,10 +138,10 @@ private:
 	pNode _root;
 };
 
-//Àà¶¨Òå½áÊø
+//ç±»å®šä¹‰ç»“æŸ
 
-//Ä¬ÈÏ·ÃÎÊº¯Êı
-//ÒòÄ£°åº¯Êı£¬ÊµÏÖÓëÉùÃ÷Ó¦ÔÚÒ»Æğ£¨·ñÔòÈİÒ×²úÉúÎŞ·¨½âÎöµÄÍâ²¿·ûºÅ£©
+//é»˜è®¤è®¿é—®å‡½æ•°
+//å› æ¨¡æ¿å‡½æ•°ï¼Œå®ç°ä¸å£°æ˜åº”åœ¨ä¸€èµ·ï¼ˆå¦åˆ™å®¹æ˜“äº§ç”Ÿæ— æ³•è§£æçš„å¤–éƒ¨ç¬¦å·ï¼‰
 template <typename T>
 void defaultVisit(BinSortTreeNode<T>* p)
 {
@@ -180,13 +180,13 @@ int main()
 				char yesOrNo = 0;
 				std::cin >> yesOrNo;
 				if (yesOrNo != 'y' && yesOrNo != 'Y') { continue; }
-				else { //ÏÈ°ÑËùÓĞ½ÚµãÇå¿Õµô
+				else { //å…ˆæŠŠæ‰€æœ‰èŠ‚ç‚¹æ¸…ç©ºæ‰
 					tree.Destory(tree.getRoot());
 					tree = *(new BinSortTree<int>);
 				}
 			}
 
-			{const char temp = getchar(); }//²»¿ÉÉ¾µô£¬¶ÁÈ¡ÉÏ´ÎÊäÈëµÄ»Ø³µ
+			{const char temp = getchar(); }//ä¸å¯åˆ æ‰ï¼Œè¯»å–ä¸Šæ¬¡è¾“å…¥çš„å›è½¦
 
 			printf("Please input key(intger) to create BSort_Tree:\n");
 			tree.createTree();
@@ -220,7 +220,7 @@ int main()
 			}
 		}
 		else if (exit == choice) {
-			std::cout << "°´»Ø³µ¼üÒÔÍË³ö\n";
+			std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 			std::cin.get();
 			std::cin.get();
 			return 0;
@@ -236,16 +236,16 @@ int main()
 }
 
 
-//¹¤¾ßº¯ÊıµÄÊµÏÖ
+//å·¥å…·å‡½æ•°çš„å®ç°
 void menu()
 {
 	std::cout << "========================================\n";
-	std::cout << "**        ÇëÑ¡ÔñÒªÖ´ĞĞµÄ²Ù×÷£º        **\n";
-	std::cout << "**        1 --- ½¨Á¢¶ş²æÅÅĞòÊ÷        **\n";
-	std::cout << "**        2 --- ²åÈëÔªËØ              **\n";
-	std::cout << "**        3 --- ²éÑ¯ÔªËØ              **\n";
-	std::cout << "**        4 --- ÍË³ö³ÌĞò              **\n";
-	std::cout << "**        5 --- Çå¿ÕÆÁÄ»              **\n";
+	std::cout << "**        è¯·é€‰æ‹©è¦æ‰§è¡Œçš„æ“ä½œï¼š        **\n";
+	std::cout << "**        1 --- å»ºç«‹äºŒå‰æ’åºæ ‘        **\n";
+	std::cout << "**        2 --- æ’å…¥å…ƒç´               **\n";
+	std::cout << "**        3 --- æŸ¥è¯¢å…ƒç´               **\n";
+	std::cout << "**        4 --- é€€å‡ºç¨‹åº              **\n";
+	std::cout << "**        5 --- æ¸…ç©ºå±å¹•              **\n";
 	std::cout << "========================================\n";
 }
 
@@ -276,7 +276,7 @@ void checkInput(int& input)
 bool isNumber(const std::string& src)
 {
 	size_t i = 0u;
-	if (src[0] == '-') {//¸ºÊıÓ¦¸Ã±»Ô­ÁÂ
+	if (src[0] == '-') {//è´Ÿæ•°åº”è¯¥è¢«åŸè°…
 		i++;
 	}
 	for (; i < src.length(); i++) {
@@ -286,12 +286,12 @@ bool isNumber(const std::string& src)
 	}
 	return true;
 }
-//¹¤¾ßº¯ÊıµÄÊµÏÖ½áÊø
+//å·¥å…·å‡½æ•°çš„å®ç°ç»“æŸ
 
 
-//ÀàÊµÏÖ
+//ç±»å®ç°
 // 
-//¶ş²æÊ÷º¯ÊıÊµÏÖ
+//äºŒå‰æ ‘å‡½æ•°å®ç°
 
 template<class T>
 inline void BinSortTree<T>::createTree()
@@ -299,11 +299,11 @@ inline void BinSortTree<T>::createTree()
 	std::string InputStr;
 	std::getline(std::cin, InputStr);
 
-	//Ôİ´æ´ÓÊäÈë×Ö·û´®ÖĞ¶ÁÈ¡µÄÁÙÊ±×Ö·û´® 
+	//æš‚å­˜ä»è¾“å…¥å­—ç¬¦ä¸²ä¸­è¯»å–çš„ä¸´æ—¶å­—ç¬¦ä¸² 
 	std::string temp;
-	//½«×Ö·û´®¶Áµ½inputÖĞ 
+	//å°†å­—ç¬¦ä¸²è¯»åˆ°inputä¸­ 
 	std::stringstream input(InputStr);
-	//ÒÀ´ÎÊä³öµ½resultÖĞ£¬²¢´æÈëresÖĞ 
+	//ä¾æ¬¡è¾“å‡ºåˆ°resultä¸­ï¼Œå¹¶å­˜å…¥resä¸­ 
 	
 	while (input >> temp)
 	{
@@ -332,7 +332,7 @@ inline bool BinSortTree<T>::Insert(const T& x)
 	}
 
 	pNode current = getRoot();
-	pNode par = current;//´¢´æ¸¸½Úµã
+	pNode par = current;//å‚¨å­˜çˆ¶èŠ‚ç‚¹
 
 	enum LorR { left, right };
 	enum LorR direction = right;//just a default value without any other meanings
@@ -348,7 +348,7 @@ inline bool BinSortTree<T>::Insert(const T& x)
 
 		if (current->getData() < x)
 		{
-			current = current->_right;//x¸ü´ó£¬ÏòÓÒÒÆ¶¯
+			current = current->_right;//xæ›´å¤§ï¼Œå‘å³ç§»åŠ¨
 			direction = right;
 		}
 		else
@@ -398,7 +398,7 @@ inline bool BinSortTree<T>::Search(const T& x)
 
 		if (current->getData() < x)
 		{
-			current = current->_right;//x¸ü´ó£¬ÏòÓÒÒÆ¶¯
+			current = current->_right;//xæ›´å¤§ï¼Œå‘å³ç§»åŠ¨
 		}
 		else
 		{
