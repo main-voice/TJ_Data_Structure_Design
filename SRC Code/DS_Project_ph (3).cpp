@@ -1,20 +1,20 @@
-/*ÏîÄ¿Ê®  8ÖÖÅÅĞòËã·¨µÄ±È½Ï°¸Àı*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®å  8ç§æ’åºç®—æ³•çš„æ¯”è¾ƒæ¡ˆä¾‹*/
+/**/
 
 #include <iostream>
 #include <chrono>
 
-#define DEBUG 0//ÈôÎª1£¬ÔòÊä³öÒ»Ğ©±ØÒªµÄµ÷ÊÔĞÅÏ¢£¬°üÀ¨Ô­Êı×é£¬ÒÔ¼°ÅÅĞòºóµÄÊı×é
+#define DEBUG 0//è‹¥ä¸º1ï¼Œåˆ™è¾“å‡ºä¸€äº›å¿…è¦çš„è°ƒè¯•ä¿¡æ¯ï¼ŒåŒ…æ‹¬åŸæ•°ç»„ï¼Œä»¥åŠæ’åºåçš„æ•°ç»„
 
 //check if the number is positive
 bool check(int& number);
-inline void swap(int& x, int& y) noexcept {//½»»»Á½¸öÊı×Ö
+inline void swap(int& x, int& y) noexcept {//äº¤æ¢ä¸¤ä¸ªæ•°å­—
 	int tem = x;
 	x = y;
 	y = tem;
 }
 
-//ÀûÓÃchronoÊµÏÖ¶ÔÔËĞĞÊ±¼äµÄ¼ÆÊı
+//åˆ©ç”¨chronoå®ç°å¯¹è¿è¡Œæ—¶é—´çš„è®¡æ•°
 class Timer
 {
 private:
@@ -36,20 +36,20 @@ public:
 	}
 	void printDuration()
 	{
-		std::cout << "³ÖĞøÊ±¼ä : " << duration.count() * 1000.f << "ms\n";
+		std::cout << "æŒç»­æ—¶é—´ : " << duration.count() * 1000.f << "ms\n";
 	}
 
 };
 
-//½«°ËÖÖ·½·¨·ÅÔÚÒ»¸öµ¥ÀıÀàÖĞ£¬±ãÓÚÍ³Ò»µ÷¿Ø
-//²»ĞèÒªÊµÀı»¯
+//å°†å…«ç§æ–¹æ³•æ”¾åœ¨ä¸€ä¸ªå•ä¾‹ç±»ä¸­ï¼Œä¾¿äºç»Ÿä¸€è°ƒæ§
+//ä¸éœ€è¦å®ä¾‹åŒ–
 class Sort
 {
 private:
 
 	Sort();
 	Sort(const Sort&) = delete;
-	Sort(Sort&&) = delete; //move ²»ÄÜÓÃconst£¬Õı³£Çé¿öÏÂĞèÒª½«Ô­ÓĞÖ¸ÕëÖÃ¿Õ
+	Sort(Sort&&) = delete; //move ä¸èƒ½ç”¨constï¼Œæ­£å¸¸æƒ…å†µä¸‹éœ€è¦å°†åŸæœ‰æŒ‡é’ˆç½®ç©º
 
 public:
 	static Sort& GetInstance() {
@@ -57,12 +57,12 @@ public:
 		return Instance;
 	}
 
-	//Ã°ÅİÅÅĞò
+	//å†’æ³¡æ’åº
 	static void bubbleSort(int array[], int length)
 	{
 		size_t count = 0;
 		if (length == 1 || length == 0) {
-			std::cout << "Ã°ÅİÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+			std::cout << "å†’æ³¡æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 			return;
 		}
 		for (int i = 0; i < length; i++) {
@@ -73,15 +73,15 @@ public:
 				}
 			}
 		}
-		std::cout << "Ã°ÅİÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+		std::cout << "å†’æ³¡æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 	}
 
-	//Ñ¡ÔñÅÅĞò
+	//é€‰æ‹©æ’åº
 	static void selectSort(int array[], int len)
 	{
 		size_t count = 0;
 		if (len == 1 || len == 0) {
-			std::cout << "Ñ¡ÔñÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+			std::cout << "é€‰æ‹©æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 			return;
 		}
 		for (int i = 0; i < len - 1; i++) {
@@ -96,15 +96,15 @@ public:
 				count++;
 			}
 		}
-		std::cout << "Ñ¡ÔñÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+		std::cout << "é€‰æ‹©æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 	}
 
-	//Ö±½Ó²åÈëÅÅĞò
+	//ç›´æ¥æ’å…¥æ’åº
 	static void insertSort(int array[], int len)
 	{
 		size_t count = 0;
 		if (len == 1 || len == 0) {
-			std::cout << "²åÈëÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+			std::cout << "æ’å…¥æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 			return;
 		}
 
@@ -122,53 +122,53 @@ public:
 			array[j + 1] = current;
 			count++;
 		}
-		std::cout << "²åÈëÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+		std::cout << "æ’å…¥æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 	}
 
-	//Ï£¶ûÅÅĞò
+	//å¸Œå°”æ’åº
 	static void shellSort(int array[], int length)
 	{
 		size_t count = 0;
-		//ÔöÁ¿gap£¬²¢Öğ²½ËõĞ¡ÔöÁ¿
-	//µ±gap±äÎª1µÄÊ±ºò£¬¾ÍÊÇ×îÆÕÍ¨µÄ²åÈëÅÅĞò
+		//å¢é‡gapï¼Œå¹¶é€æ­¥ç¼©å°å¢é‡
+	//å½“gapå˜ä¸º1çš„æ—¶å€™ï¼Œå°±æ˜¯æœ€æ™®é€šçš„æ’å…¥æ’åº
 		for (int gap = length / 2; gap > 0; gap /= 2) {
-			//´ÓµÚgap¸öÔªËØ£¬Öğ¸ö¶ÔÆäËùÔÚ×é½øĞĞÖ±½Ó²åÈëÅÅĞò²Ù×÷
+			//ä»ç¬¬gapä¸ªå…ƒç´ ï¼Œé€ä¸ªå¯¹å…¶æ‰€åœ¨ç»„è¿›è¡Œç›´æ¥æ’å…¥æ’åºæ“ä½œ
 			for (int i = gap; i < length; i++) {
 				int j = i;
 				while (j - gap >= 0 && array[j] < array[j - gap]) {
-					//²åÈëÅÅĞò²ÉÓÃ½»»»·¨
+					//æ’å…¥æ’åºé‡‡ç”¨äº¤æ¢æ³•
 					swap(array[j], array[j - gap]);
 					count++;
-					j -= gap;//´Ë´¦¼õÈ¥gapµÄ²Ù×÷ÔÚÒ»°ãµÄ²åÈëÅÅĞòÀï¾ÍÊÇj--µÄ¹ı³Ì
+					j -= gap;//æ­¤å¤„å‡å»gapçš„æ“ä½œåœ¨ä¸€èˆ¬çš„æ’å…¥æ’åºé‡Œå°±æ˜¯j--çš„è¿‡ç¨‹
 				}
 			}
 		}
-		std::cout << "Ï£¶ûÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+		std::cout << "å¸Œå°”æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 	}
 
-	//¿ìËÙÅÅĞò
+	//å¿«é€Ÿæ’åº
 	static void quickSort(int array[], int left, int right)
 	{
-		static size_t count;//ÓÉÓÚµİ¹é£¬Ê¹ÓÃstatic
-		static int flag = -1;//ÎªÁËÖ»Êä³öÒ»´Î½»»»´ÎÊı£¬Ã¿´Îµ÷ÓÃ¸Ãº¯Êı×ÔÔöÒ»´Î£¬flagÎª0ÔòÊä³ö
+		static size_t count;//ç”±äºé€’å½’ï¼Œä½¿ç”¨static
+		static int flag = -1;//ä¸ºäº†åªè¾“å‡ºä¸€æ¬¡äº¤æ¢æ¬¡æ•°ï¼Œæ¯æ¬¡è°ƒç”¨è¯¥å‡½æ•°è‡ªå¢ä¸€æ¬¡ï¼Œflagä¸º0åˆ™è¾“å‡º
 
 
 		int L = 0, R(0), temp(0);
 		if (left > right)
 			return;
 
-		temp = array[left]; //tempÖĞ´æµÄ¾ÍÊÇ»ù×¼Êı
+		temp = array[left]; //tempä¸­å­˜çš„å°±æ˜¯åŸºå‡†æ•°
 		L = left;
 		R = right;
-		while (L != R)//°Ñµ±Ç°right-left³¤¶ÈµÄÊı×éÍêÈ«ÅÅºÃĞò
+		while (L != R)//æŠŠå½“å‰right-lefté•¿åº¦çš„æ•°ç»„å®Œå…¨æ’å¥½åº
 		{
-			//Ë³ĞòºÜÖØÒª£¬ÒªÏÈ´ÓÓÒ±ß¿ªÊ¼ÕÒ
+			//é¡ºåºå¾ˆé‡è¦ï¼Œè¦å…ˆä»å³è¾¹å¼€å§‹æ‰¾
 			while (array[R] >= temp && L < R)
 				R--;
-			//ÔÙÕÒÓÒ±ßµÄ
+			//å†æ‰¾å³è¾¹çš„
 			while (array[L] <= temp && L < R)
 				L++;
-			//½»»»Á½¸öÊıÔÚÊı×éÖĞµÄÎ»ÖÃ
+			//äº¤æ¢ä¸¤ä¸ªæ•°åœ¨æ•°ç»„ä¸­çš„ä½ç½®
 			if (L < R)
 			{
 				int t = 0;
@@ -178,32 +178,32 @@ public:
 				count++;
 			}
 		}
-		//×îÖÕ½«»ù×¼Êı¹éÎ»
+		//æœ€ç»ˆå°†åŸºå‡†æ•°å½’ä½
 		array[left] = array[L];
 		array[L] = temp;
 
-		quickSort(array, left, L - 1);//¼ÌĞø´¦Àí×ó±ßµÄ£¬ÕâÀïÊÇÒ»¸öµİ¹éµÄ¹ı³Ì
-		quickSort(array, L + 1, right);//¼ÌĞø´¦ÀíÓÒ±ßµÄ£¬ÕâÀïÊÇÒ»¸öµİ¹éµÄ¹ı³Ì
+		quickSort(array, left, L - 1);//ç»§ç»­å¤„ç†å·¦è¾¹çš„ï¼Œè¿™é‡Œæ˜¯ä¸€ä¸ªé€’å½’çš„è¿‡ç¨‹
+		quickSort(array, L + 1, right);//ç»§ç»­å¤„ç†å³è¾¹çš„ï¼Œè¿™é‡Œæ˜¯ä¸€ä¸ªé€’å½’çš„è¿‡ç¨‹
 
-		flag++;//×¢Òâ£ºÓ¦¸ÃÏÈµİ¹éÍêÔÙ×ÔÔö
+		flag++;//æ³¨æ„ï¼šåº”è¯¥å…ˆé€’å½’å®Œå†è‡ªå¢
 
 		//std::cout << flag << "\n";
 
 		if (flag == 0)
 		{
-			std::cout << "¿ìËÙÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+			std::cout << "å¿«é€Ÿæ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 		}
 	}
 
-	//¶ÑÅÅĞò
+	//å †æ’åº
 	static void heapSort(int array[], int len)
 	{
 		size_t count = 0;
-		// ³õÊ¼»¯£¬½¨Á¢Ò»¸ö×î´ó¶Ñ£¬´ÓÏÂÍùÉÏ
+		// åˆå§‹åŒ–ï¼Œå»ºç«‹ä¸€ä¸ªæœ€å¤§å †ï¼Œä»ä¸‹å¾€ä¸Š
 		for (int i = len / 2 - 1; i >= 0; i--)
 			max_heapify(array, i, len - 1); //create a max heap
 
-		//¶ÔÓÚÒ»¸ö×î´ó¶Ñ£¬ÎÒÃÇÎ¨Ò»ÄÜ¹»È·¶¨µÄË³Ğò¾ÍÊÇ¶Ñ¶¥ÔªËØ×î´óarr[0]£¬Òò´Ëµ±ÎÒÃÇÒÑ¾­½¨Á¢ºÃÒ»¸ö×î´ó¶Ñºó£¬Í¨¹ı½»»»µÚÒ»¸öÓë×îºóÒ»¸ö£¬¾Í°Ñ×î´óÖµÅÅºÃÁËÎ»ÖÃ£¬Ö®ºóÈ¥µôËü£¬ÔÙ¹¹½¨ĞÂµÄ×î´ó¶Ñ£¬¼ÌĞøÕÒ×î´óÖµ£¬Ñ­»·¼´¿É
+		//å¯¹äºä¸€ä¸ªæœ€å¤§å †ï¼Œæˆ‘ä»¬å”¯ä¸€èƒ½å¤Ÿç¡®å®šçš„é¡ºåºå°±æ˜¯å †é¡¶å…ƒç´ æœ€å¤§arr[0]ï¼Œå› æ­¤å½“æˆ‘ä»¬å·²ç»å»ºç«‹å¥½ä¸€ä¸ªæœ€å¤§å †åï¼Œé€šè¿‡äº¤æ¢ç¬¬ä¸€ä¸ªä¸æœ€åä¸€ä¸ªï¼Œå°±æŠŠæœ€å¤§å€¼æ’å¥½äº†ä½ç½®ï¼Œä¹‹åå»æ‰å®ƒï¼Œå†æ„å»ºæ–°çš„æœ€å¤§å †ï¼Œç»§ç»­æ‰¾æœ€å¤§å€¼ï¼Œå¾ªç¯å³å¯
 		// 
 		for (int i = len - 1; i > 0; i--) {
 			swap(array[0], array[i]); // swap first and last node , now the last node is the biggest
@@ -211,20 +211,20 @@ public:
 			max_heapify(array, 0, i - 1); // create max heap on reduced array, because the i-1 is reduced, so as if we remove the last node
 		}
 
-		std::cout << "¶ÑÅÅĞò½»»»´ÎÊı£º    " << count << "\n";
+		std::cout << "å †æ’åºäº¤æ¢æ¬¡æ•°ï¼š    " << count << "\n";
 
 	}
 
-	//¹é²¢ÅÅĞò
+	//å½’å¹¶æ’åº
 	static void mergeSort(int array[], int length)
 	{
-		static int flag = -1;//ÎªÁËÖ»Êä³öÒ»´Î½»»»´ÎÊı£¬Ã¿´Îµ÷ÓÃ¸Ãº¯Êı×ÔÔöÒ»´Î£¬flagÎª0ÔòÊä³ö
+		static int flag = -1;//ä¸ºäº†åªè¾“å‡ºä¸€æ¬¡äº¤æ¢æ¬¡æ•°ï¼Œæ¯æ¬¡è°ƒç”¨è¯¥å‡½æ•°è‡ªå¢ä¸€æ¬¡ï¼Œflagä¸º0åˆ™è¾“å‡º
 		int* reg = new int[length];
-		merge_sort_recursive(array, reg, 0, length - 1, flag);//µİ¹éº¯Êı
+		merge_sort_recursive(array, reg, 0, length - 1, flag);//é€’å½’å‡½æ•°
 		delete[] reg;
 	}
 
-	//»ùÊıÅÅĞò
+	//åŸºæ•°æ’åº
 	static void radixSort(int array[], int length)
 	{
 		if (length <= 1) { return; }
@@ -239,24 +239,24 @@ public:
 
 		max = array[max];
 
-		//ÌáÈ¡Ã¿Ò»Î»²¢½øĞĞ±È½Ï£¬Î»Êı²»×ãµÄ¸ßÎ»²¹0
+		//æå–æ¯ä¸€ä½å¹¶è¿›è¡Œæ¯”è¾ƒï¼Œä½æ•°ä¸è¶³çš„é«˜ä½è¡¥0
 		for (int exp = 1; max / exp > 0; exp *= 10) {
 			countSortForRadix(array, length, exp);
 		}
 		return;
 	}
 
-	//-----------ÒÔÏÂÎªÔÚÅÅĞòº¯ÊıÖĞµ÷ÓÃµÄº¯Êı£¬Òò²»ĞèÒªÍâ½çµ÷ÓÃ£¬ÉèÎªprivate
+	//-----------ä»¥ä¸‹ä¸ºåœ¨æ’åºå‡½æ•°ä¸­è°ƒç”¨çš„å‡½æ•°ï¼Œå› ä¸éœ€è¦å¤–ç•Œè°ƒç”¨ï¼Œè®¾ä¸ºprivate
 private:
 
-	//½«arrÊı×é»¯Îª×î´ó¶Ñ
+	//å°†arræ•°ç»„åŒ–ä¸ºæœ€å¤§å †
 	static void max_heapify(int arr[], int start, int end)
 	{
 
 		int dad = start;
 		int son = dad * 2 + 1;
 		while (son <= end) {
-			if (son + 1 <= end && arr[son] < arr[son + 1]) // Ñ¡Ôñ×î´óµÄ×Ó½Úµã
+			if (son + 1 <= end && arr[son] < arr[son + 1]) // é€‰æ‹©æœ€å¤§çš„å­èŠ‚ç‚¹
 				son++;
 			if (arr[dad] > arr[son])
 				return;
@@ -268,7 +268,7 @@ private:
 		}
 	}
 
-	//¹é²¢ÅÅĞòËùÓÃµ½µÄµİ¹éº¯Êı
+	//å½’å¹¶æ’åºæ‰€ç”¨åˆ°çš„é€’å½’å‡½æ•°
 	static void merge_sort_recursive(int arr[], int reg[], int start, int end, int flag) {
 
 		static size_t count = 0;
@@ -304,15 +304,15 @@ private:
 			count++;
 		}
 
-		for (k = start; k <= end; k++)//regÊÇÁÙÊ±±äÁ¿´æ´¢Êı¾İ
+		for (k = start; k <= end; k++)//regæ˜¯ä¸´æ—¶å˜é‡å­˜å‚¨æ•°æ®
 			arr[k] = reg[k];
 
 		if (flag == 0) {
-			std::cout << "¹é²¢ÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+			std::cout << "å½’å¹¶æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 		}
 	}
 
-	//×¨ÃÅÎª»ùÊıÅÅĞò¶øÊµÏÖµÄ¼ÆÊıÅÅĞò£¬¸ü¼Ó·½±ã»ùÊıÅÅĞò£¬digit ÊÇÎ»È¨µÄĞÅÏ¢
+	//ä¸“é—¨ä¸ºåŸºæ•°æ’åºè€Œå®ç°çš„è®¡æ•°æ’åºï¼Œæ›´åŠ æ–¹ä¾¿åŸºæ•°æ’åºï¼Œdigit æ˜¯ä½æƒçš„ä¿¡æ¯
 	static void countSortForRadix(int* array, int length, int digit)
 	{
 		static size_t count = 0;
@@ -327,11 +327,11 @@ private:
 		}
 
 		int countBucket[10]{};
-		//°´ÕÕ¸÷Î»È¥¸øÍ°¼ÆÊı£¬ÓÉÓÚÒ»Î»×î¶àÖ»ÓĞÊ®ÖÖÇé¿ö£¬´Ó0 - 9£¬ËùÒÔÖ»ĞèÒª¿ª10¸öÔªËØ´óĞ¡¾Í¿ÉÒÔ
+		//æŒ‰ç…§å„ä½å»ç»™æ¡¶è®¡æ•°ï¼Œç”±äºä¸€ä½æœ€å¤šåªæœ‰åç§æƒ…å†µï¼Œä»0 - 9ï¼Œæ‰€ä»¥åªéœ€è¦å¼€10ä¸ªå…ƒç´ å¤§å°å°±å¯ä»¥
 
 		for (int i = 0; i < length; i++)
 		{
-			int index = (array[i] / digit) % 10;//¸ßÎ»×ÔÈ»ÊÇ0£¬¼´´ïµ½ÁË½Ï¶ÌÊı×Ö¸ßÎ»²¹ÁãµÄÄ¿µÄ
+			int index = (array[i] / digit) % 10;//é«˜ä½è‡ªç„¶æ˜¯0ï¼Œå³è¾¾åˆ°äº†è¾ƒçŸ­æ•°å­—é«˜ä½è¡¥é›¶çš„ç›®çš„
 			countBucket[index]++;
 		}
 
@@ -350,7 +350,7 @@ private:
 			array[i] = copy[i];
 		}
 		if (flag == 0) {
-			std::cout << "»ùÊıÅÅĞò½»»»´ÎÊı£º  " << count << "\n";
+			std::cout << "åŸºæ•°æ’åºäº¤æ¢æ¬¡æ•°ï¼š  " << count << "\n";
 
 		}
 
@@ -366,18 +366,18 @@ int main()
 {
 	using namespace std;
 
-	cout << " ÅÅĞòËã·¨±È½Ï\n\n";
-	cout << " 1. Ã°ÅİÅÅĞò\n";
-	cout << " 2. Ñ¡ÔñÅÅĞò\n";
-	cout << " 3. Ö±½Ó²åÈëÅÅĞò\n";
-	cout << " 4. Ï£¶ûÅÅĞò\n";
-	cout << " 5. ¿ìËÙÅÅĞò\n";
-	cout << " 6. ¶ÑÅÅĞò\n";
-	cout << " 7. ¹é²¢ÅÅĞò\n";
-	cout << " 8. »ùÊıÅÅĞò\n";
-	cout << " 9. ÍË³ö\n";
+	cout << " æ’åºç®—æ³•æ¯”è¾ƒ\n\n";
+	cout << " 1. å†’æ³¡æ’åº\n";
+	cout << " 2. é€‰æ‹©æ’åº\n";
+	cout << " 3. ç›´æ¥æ’å…¥æ’åº\n";
+	cout << " 4. å¸Œå°”æ’åº\n";
+	cout << " 5. å¿«é€Ÿæ’åº\n";
+	cout << " 6. å †æ’åº\n";
+	cout << " 7. å½’å¹¶æ’åº\n";
+	cout << " 8. åŸºæ•°æ’åº\n";
+	cout << " 9. é€€å‡º\n";
 
-	cout << "ÇëÊäÈëÒª²úÉúµÄËæ»úÊıµÄ¸öÊı£¨ÎÂÜ°ÌáÊ¾£º¼ÆËã»úÎŞ·¨±íÊ¾ÎŞÇî£©\n";
+	cout << "è¯·è¾“å…¥è¦äº§ç”Ÿçš„éšæœºæ•°çš„ä¸ªæ•°ï¼ˆæ¸©é¦¨æç¤ºï¼šè®¡ç®—æœºæ— æ³•è¡¨ç¤ºæ— ç©·ï¼‰\n";
 	int Size;
 	cin >> Size;
 	check(Size);
@@ -385,7 +385,7 @@ int main()
 	int* array = new int[Size];
 	int* copy = new int[Size];
 	srand((unsigned)time(NULL));
-	//Í¨ÓÃ¹«Ê½: a + rand() % n£»ÆäÖĞµÄ a ÊÇÆğÊ¼Öµ£¬n ÊÇÕûÊıµÄ·¶Î§¡£
+	//é€šç”¨å…¬å¼: a + rand() % nï¼›å…¶ä¸­çš„ a æ˜¯èµ·å§‹å€¼ï¼Œn æ˜¯æ•´æ•°çš„èŒƒå›´ã€‚
 
 	//initialize
 	for (int i = 0; i < Size; i++)
@@ -404,7 +404,7 @@ int main()
 
 	while (1)
 	{
-		cout << "Ñ¡ÔñÒ»ÖÖÅÅĞòËã·¨\n";
+		cout << "é€‰æ‹©ä¸€ç§æ’åºç®—æ³•\n";
 		cin >> choice;
 		check(choice);
 
@@ -438,7 +438,7 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
@@ -470,7 +470,7 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
@@ -503,7 +503,7 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
@@ -534,7 +534,7 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
@@ -556,7 +556,7 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
@@ -578,7 +578,7 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
@@ -600,7 +600,7 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
@@ -622,14 +622,14 @@ int main()
 
 			for (int i = 0; i < Size; i++)
 			{
-				array[i] = copy[i];//»Ö¸´Êı×éÔ­ĞÍ
+				array[i] = copy[i];//æ¢å¤æ•°ç»„åŸå‹
 			}
 			break;
 		}
 		case quit:
 		{
 			cout << "quit!\n";
-			cout << "°´»Ø³µ¼üÍË³ö.\n";
+			cout << "æŒ‰å›è½¦é”®é€€å‡º.\n";
 			delete[] array;
 			delete[] copy;
 			std::cin.get();
