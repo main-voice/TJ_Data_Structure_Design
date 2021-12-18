@@ -1,25 +1,25 @@
-/*ÏîÄ¿°Ë  µçÍø½¨ÉèÔì¼ÛÄ£ÄâÏµÍ³*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®å…«  ç”µç½‘å»ºè®¾é€ ä»·æ¨¡æ‹Ÿç³»ç»Ÿ*/
+/**/
 
 
 #include <iostream>
 #include <limits.h>
 
-//ºê¶¨Òå
-#define _DEBUG_   0//ÊÇ·ñÊä³öÒ»Ğ©µ÷ÊÔĞÅÏ¢
+//å®å®šä¹‰
+#define _DEBUG_   0//æ˜¯å¦è¾“å‡ºä¸€äº›è°ƒè¯•ä¿¡æ¯
 #define _MAXNUM_  INT_MAX
-#define _INSIDE_  1//±íÊ¾ÊÇ·ñÔÚµ±Ç°×îĞ¡Éú³ÉÊ÷µÄ¶¥µã¼¯ºÏÄÚ
+#define _INSIDE_  1//è¡¨ç¤ºæ˜¯å¦åœ¨å½“å‰æœ€å°ç”Ÿæˆæ ‘çš„é¡¶ç‚¹é›†åˆå†…
 #define _OUTSIDE_ 0
-//ºê¶¨Òå½áÊø
+//å®å®šä¹‰ç»“æŸ
 
 
-//Àà¶¨Òå
-//±íÊ¾±ßµÄÀà
+//ç±»å®šä¹‰
+//è¡¨ç¤ºè¾¹çš„ç±»
 class Edge
 {
 public:
-	char m_src, m_dest;//ÆğµãÓëÖÕµã
-	int  m_weight;//±ßµÄÈ¨Öµ
+	char m_src, m_dest;//èµ·ç‚¹ä¸ç»ˆç‚¹
+	int  m_weight;//è¾¹çš„æƒå€¼
 
 	Edge(char src = 0, char dest = 0, int weight = 0)
 		:m_src(src), m_dest(dest), m_weight(weight)
@@ -32,41 +32,41 @@ public:
 	bool operator > (Edge& other)  noexcept { return this->m_weight > other.m_weight; }*/
 };
 
-//±íÊ¾×îĞ¡Éú³ÉÊ÷µÄÀà£¬´æ´¢¶¥µãĞÅÏ¢£¬±ßĞÅÏ¢£¬ÒÔ¼°×îĞ¡Éú³ÉÊ÷ĞÅÏ¢
+//è¡¨ç¤ºæœ€å°ç”Ÿæˆæ ‘çš„ç±»ï¼Œå­˜å‚¨é¡¶ç‚¹ä¿¡æ¯ï¼Œè¾¹ä¿¡æ¯ï¼Œä»¥åŠæœ€å°ç”Ÿæˆæ ‘ä¿¡æ¯
 class Graph_MST
 {
 private:
 
-	char* m_vex;//¶¥µã±í
-	int* m_mtx;//ÁÚ½Ó¾ØÕó£¬ÓÃÓÚ´æ´¢±ßµÄÈ¨Öµ, Ê¹ÓÃÒ»Î¬Êı×é£¬Æä´óĞ¡ÎªN x N
+	char* m_vex;//é¡¶ç‚¹è¡¨
+	int* m_mtx;//é‚»æ¥çŸ©é˜µï¼Œç”¨äºå­˜å‚¨è¾¹çš„æƒå€¼, ä½¿ç”¨ä¸€ç»´æ•°ç»„ï¼Œå…¶å¤§å°ä¸ºN x N
 	int   m_edge_num;
 	int   m_vex_num;
 
-	Edge* a_EdgeNode;//´æ´¢×îÖÕ½á¹ûµÄ±ßÖµÊı×é
+	Edge* a_EdgeNode;//å­˜å‚¨æœ€ç»ˆç»“æœçš„è¾¹å€¼æ•°ç»„
 
 	int   V_Num()const noexcept { return m_vex_num; }
 	int   getVextexPos(char vex);
 public:
-	Graph_MST(int vex_num);//¹¹Ôìº¯Êı
+	Graph_MST(int vex_num);//æ„é€ å‡½æ•°
 	Graph_MST();
 
-	void addNode();//ÏòÍ¼ÖĞÔö¼Ó¶¥µã
-	void addEdge();//ÏòÍ¼ÖĞÔö¼Ó±ß,¼´¸ù¾İÊäÈëÈ¥´´½¨ÁÚ½Ó¾ØÕó
+	void addNode();//å‘å›¾ä¸­å¢åŠ é¡¶ç‚¹
+	void addEdge();//å‘å›¾ä¸­å¢åŠ è¾¹,å³æ ¹æ®è¾“å…¥å»åˆ›å»ºé‚»æ¥çŸ©é˜µ
 
-	void MinSpanTree_Prim();//primËã·¨´´½¨×îĞ¡Éú³ÉÊ÷
+	void MinSpanTree_Prim();//primç®—æ³•åˆ›å»ºæœ€å°ç”Ÿæˆæ ‘
 
 	void OutPutTree();
 	~Graph_MST();
 };
 
 
-//tool function£¨¹¤¾ßº¯ÊıÉùÃ÷£©
+//tool functionï¼ˆå·¥å…·å‡½æ•°å£°æ˜ï¼‰
 
-void menu();// ³õÊ¼»¯½çÃæ
-bool check(char& choice);//¼ì²âÊäÈëÊÇ·ñÕıÈ·£¨a-f£¬´óĞ¡Ğ´²»Ãô¸Ğ£©
-//¹¤¾ßº¯ÊıÉùÃ÷½áÊø
+void menu();// åˆå§‹åŒ–ç•Œé¢
+bool check(char& choice);//æ£€æµ‹è¾“å…¥æ˜¯å¦æ­£ç¡®ï¼ˆa-fï¼Œå¤§å°å†™ä¸æ•æ„Ÿï¼‰
+//å·¥å…·å‡½æ•°å£°æ˜ç»“æŸ
 
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 int main()
 {	
 	Graph_MST graph;
@@ -79,7 +79,7 @@ int main()
 
 	while (1)
 	{
-		std::cout << "\nÇëÑ¡Ôñ²Ù×÷£º ";
+		std::cout << "\nè¯·é€‰æ‹©æ“ä½œï¼š ";
 		std::cin >> choice;
 		check(choice);
 
@@ -107,7 +107,7 @@ int main()
 		}
 		case exit:
 		{
-			std::cout << "°´»Ø³µ¼üÒÔÍË³ö\n";
+			std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 			std::cin.get();
 			std::cin.get();
 			return 0;
@@ -131,21 +131,21 @@ int main()
 
 
 
-//£¨¹¤¾ßº¯ÊıÊµÏÖ£©
+//ï¼ˆå·¥å…·å‡½æ•°å®ç°ï¼‰
 void menu()
 {
 	using namespace std;
 	cout << "*************************************************\n";
 	cout << "**                                             **\n";
-	cout << "**              µçÍøÔì¼ÛÄ£ÄâÏµÍ³               **\n";
+	cout << "**              ç”µç½‘é€ ä»·æ¨¡æ‹Ÿç³»ç»Ÿ               **\n";
 	cout << "**                                             **\n";
 	cout << "*************************************************\n";
-	cout << "**              A/a --- ´´½¨µçÍø¶¥µã           **\n";
-	cout << "**              B/b --- Ìí¼ÓµçÍøµÄ±ß           **\n";
-	cout << "**              C/c --- ¹¹Ôì×îĞ¡Éú³ÉÊ÷         **\n";
-	cout << "**              D/d --- ÏÔÊ¾×îĞ¡Éú³ÉÊ÷         **\n";
-	cout << "**              E/e --- ÍË³ö³ÌĞò               **\n";
-	cout << "**              F/f --- ÇåÆÁ                   **\n";
+	cout << "**              A/a --- åˆ›å»ºç”µç½‘é¡¶ç‚¹           **\n";
+	cout << "**              B/b --- æ·»åŠ ç”µç½‘çš„è¾¹           **\n";
+	cout << "**              C/c --- æ„é€ æœ€å°ç”Ÿæˆæ ‘         **\n";
+	cout << "**              D/d --- æ˜¾ç¤ºæœ€å°ç”Ÿæˆæ ‘         **\n";
+	cout << "**              E/e --- é€€å‡ºç¨‹åº               **\n";
+	cout << "**              F/f --- æ¸…å±                   **\n";
 	cout << "**                                             **\n";
 	cout << "*************************************************\n\n";
 }
@@ -154,20 +154,20 @@ bool check(char& choice)
 {
 	if (choice >= 'a' && choice <= 'f')
 	{
-		choice += 'A' - 'a'; // Í³Ò»´óĞ¡Ğ´£¬Ö»ÓĞA-E
+		choice += 'A' - 'a'; // ç»Ÿä¸€å¤§å°å†™ï¼Œåªæœ‰A-E
 		//std::cout << choice;
 	}
 
-	while (choice < 'A' || choice > 'F')     // ²Ù×÷Âë¼ì²â
+	while (choice < 'A' || choice > 'F')     // æ“ä½œç æ£€æµ‹
 	{
-		std::cout << "ÊäÈë²Ù×÷²»´æÔÚ£¡ÇëÖØĞÂÊäÈë£º ";
+		std::cout << "è¾“å…¥æ“ä½œä¸å­˜åœ¨ï¼è¯·é‡æ–°è¾“å…¥ï¼š ";
 		std::cin.clear();
 		std::cin.ignore(65535, '\n');
 		std::cin >> choice;
 
 		if (choice >= 'a' && choice <= 'f')
 		{
-			choice += 'A' - 'a'; // Í³Ò»´óĞ¡Ğ´£¬Ö»ÓĞA-E
+			choice += 'A' - 'a'; // ç»Ÿä¸€å¤§å°å†™ï¼Œåªæœ‰A-E
 			//std::cout << choice;
 		}
 	}
@@ -178,11 +178,11 @@ bool check(char& choice)
 inline void print(const char* message) {
 	std::cout << message << std::endl;
 }
-//£¨¹¤¾ßº¯ÊıÊµÏÖ½áÊø£©
+//ï¼ˆå·¥å…·å‡½æ•°å®ç°ç»“æŸï¼‰
 
 
 //
-//Graph_MSTÀàº¯ÊıÊµÏÖ
+//Graph_MSTç±»å‡½æ•°å®ç°
 
 int Graph_MST::getVextexPos(char vex)
 {
@@ -200,16 +200,16 @@ Graph_MST::Graph_MST(int vex_num)
 	m_vex_num = vex_num;
 	if (m_vex_num <= 0)
 	{
-		print("¶¥µãÊıÁ¿Ğ¡ÓÚ0£¬ÊäÈë´íÎó");
+		print("é¡¶ç‚¹æ•°é‡å°äº0ï¼Œè¾“å…¥é”™è¯¯");
 	}
 	m_vex = new char[m_vex_num];
 
 	if (m_vex == nullptr)
 	{
-		print("·ÖÅä´íÎó£¬¶¥µãÊı×éÎª¿ÕÖ¸Õë");
+		print("åˆ†é…é”™è¯¯ï¼Œé¡¶ç‚¹æ•°ç»„ä¸ºç©ºæŒ‡é’ˆ");
 	}
 
-	print("ÇëÒÀ´ÎÊäÈë¸÷¶¥µãµÄÃû³Æ£º");
+	print("è¯·ä¾æ¬¡è¾“å…¥å„é¡¶ç‚¹çš„åç§°ï¼š");
 	for (int i = 0; i < m_vex_num; i++)
 	{
 		char temp = 0;
@@ -226,7 +226,7 @@ Graph_MST::Graph_MST(int vex_num)
 	a_EdgeNode = new Edge[V_Num() - 1];
 	if (a_EdgeNode == nullptr)
 	{
-		print("±ßÖµÊı×é·ÖÅä¿Õ¼ä´íÎó£¡\n");
+		print("è¾¹å€¼æ•°ç»„åˆ†é…ç©ºé—´é”™è¯¯ï¼\n");
 		return;
 	}
 }
@@ -243,13 +243,13 @@ Graph_MST::Graph_MST()
 
 void Graph_MST::addNode()
 {
-	std::cout << "ÇëÊäÈë¶¥µãµÄ¸öÊı£º ";
+	std::cout << "è¯·è¾“å…¥é¡¶ç‚¹çš„ä¸ªæ•°ï¼š ";
 	int nodeNum;
 	std::cin >> nodeNum;
 
 	while (std::cin.fail() || nodeNum <= 1)
 	{
-		std::cout << "ÊäÈë´íÎó£¬ÇëÊäÈë´óÓÚ1µÄÕıÕûÊı£º ";
+		std::cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·è¾“å…¥å¤§äº1çš„æ­£æ•´æ•°ï¼š ";
 		std::cin.clear();
 		std::cin.ignore(6555, '\n');
 		std::cin >> nodeNum;
@@ -257,16 +257,16 @@ void Graph_MST::addNode()
 	m_vex_num = nodeNum;
 	m_vex = new char[m_vex_num];
 
-	std::cout << "ÇëÊäÈë¸÷¶¥µãµÄÃû³Æ£º\n";
+	std::cout << "è¯·è¾“å…¥å„é¡¶ç‚¹çš„åç§°ï¼š\n";
 
 	for (int i = 0; i < m_vex_num; i++) {
 		std::cin >> m_vex[i];
-	}// ´æ´¢½áµã£¬½¨Á¢ÏÂ±êÓë×Ö·ûÒ»Ò»¶ÔÓ¦µÄ¹ØÏµ
+	}// å­˜å‚¨ç»“ç‚¹ï¼Œå»ºç«‹ä¸‹æ ‡ä¸å­—ç¬¦ä¸€ä¸€å¯¹åº”çš„å…³ç³»
 
 	a_EdgeNode = new Edge[V_Num() - 1];
 	if (a_EdgeNode == nullptr)
 	{
-		print("±ßÖµÊı×é·ÖÅä¿Õ¼ä´íÎó£¡\n");
+		print("è¾¹å€¼æ•°ç»„åˆ†é…ç©ºé—´é”™è¯¯ï¼\n");
 		return;
 	}
 }
@@ -275,7 +275,7 @@ void Graph_MST::addEdge()
 {
 	if (m_vex_num == 0 && m_vex == nullptr)
 	{
-		std::cout << "ÎŞ¶¥µã£¬´´½¨±ß¹ØÏµ£¡Çë´´½¨¶¥µã£º\n";
+		std::cout << "æ— é¡¶ç‚¹ï¼Œåˆ›å»ºè¾¹å…³ç³»ï¼è¯·åˆ›å»ºé¡¶ç‚¹ï¼š\n";
 		addNode();
 	}
 
@@ -300,19 +300,19 @@ void Graph_MST::addEdge()
 	}
 	while (1)
 	{
-		print("\nÇëÊäÈëÁ½¸ö¶¥µã¼°±ßµÄÈ¨Öµ:");
+		print("\nè¯·è¾“å…¥ä¸¤ä¸ªé¡¶ç‚¹åŠè¾¹çš„æƒå€¼:");
 		std::cin >> vex_1;
 		std::cin >> vex_2;
 		std::cin >> edgeWeight;
 
-		//ÊäÈëÖÕÖ¹Ìõ¼ş £º ? ? 0
+		//è¾“å…¥ç»ˆæ­¢æ¡ä»¶ ï¼š ? ? 0
 		if (vex_1 == '?' && vex_2 == '?' && edgeWeight == 0) {
 			break;
 		}
 
 		
 		if (std::cin.fail()||edgeWeight <= 0) {
-			print("È¨ÖµÊäÈë´íÎó£¬È¨ÖµÓ¦¸ÃÊÇ´óÓÚ0µÄÕıÕûÊı£¬ÇëÖØĞÂÊäÈë:\n");
+			print("æƒå€¼è¾“å…¥é”™è¯¯ï¼Œæƒå€¼åº”è¯¥æ˜¯å¤§äº0çš„æ­£æ•´æ•°ï¼Œè¯·é‡æ–°è¾“å…¥:\n");
 			std::cin.clear();
 			std::cin.ignore(65535, '\n');
 			continue;
@@ -323,14 +323,14 @@ void Graph_MST::addEdge()
 		int y = getVextexPos(vex_2);
 
 		if (x == y) {
-			print("¶¥µãÊäÈëÖØ¸´£¬ÇëÖØĞÂÊäÈë\n");
+			print("é¡¶ç‚¹è¾“å…¥é‡å¤ï¼Œè¯·é‡æ–°è¾“å…¥\n");
 			std::cin.clear();
 			std::cin.ignore(65535, '\n');
 			continue;
 		}
 
 		if (x == -1 || y == -1) {
-			print("¶¥µã²»´æÔÚ£¡ÇëÖØĞÂÊäÈë¶¥µã");
+			print("é¡¶ç‚¹ä¸å­˜åœ¨ï¼è¯·é‡æ–°è¾“å…¥é¡¶ç‚¹");
 			std::cin.clear();
 			std::cin.ignore(65535, '\n');
 			continue;
@@ -338,12 +338,12 @@ void Graph_MST::addEdge()
 
 		if (m_mtx[x * m_vex_num + y] != _MAXNUM_)
 		{
-			print("ÕâÁ½¸ö¶¥µãÒÑ¾­ÊäÈë¹ı£¬È·¶¨Òª¸üĞÂÂ·¾¶Âğ£¿(Ä¬ÈÏ¸üĞÂ)(y--yes/n--no)");
+			print("è¿™ä¸¤ä¸ªé¡¶ç‚¹å·²ç»è¾“å…¥è¿‡ï¼Œç¡®å®šè¦æ›´æ–°è·¯å¾„å—ï¼Ÿ(é»˜è®¤æ›´æ–°)(y--yes/n--no)");
 			char if_not = '0';
 			std::cin >> if_not;
 			if (if_not == 'n')
 			{
-				continue;//²»¸üĞÂ£¬Ö±½ÓÊäÈëÏÂÒ»¶Ô¶¥µã
+				continue;//ä¸æ›´æ–°ï¼Œç›´æ¥è¾“å…¥ä¸‹ä¸€å¯¹é¡¶ç‚¹
 			}
 		}
 		m_mtx[x * m_vex_num + y] = edgeWeight;
@@ -367,37 +367,37 @@ void Graph_MST::MinSpanTree_Prim()
 {
 	if (m_vex_num == 0 && m_vex == nullptr)
 	{
-		std::cout << "ÎŞ¶¥µãÓë±ß£¬Çë´´½¨¶¥µãÓë±ß£º\n";
+		std::cout << "æ— é¡¶ç‚¹ä¸è¾¹ï¼Œè¯·åˆ›å»ºé¡¶ç‚¹ä¸è¾¹ï¼š\n";
 		addNode();
 		addEdge();
 	}
 	else if (m_edge_num == 0 && m_mtx == nullptr)
 	{
-		std::cout << "ÎŞ±ß¹ØÏµ£¬ÇëÏÈ´´½¨±ß¹ØÏµ£º\n";
+		std::cout << "æ— è¾¹å…³ç³»ï¼Œè¯·å…ˆåˆ›å»ºè¾¹å…³ç³»ï¼š\n";
 		addEdge();
 	}
 
 
-	print("ÇëÊäÈë×îĞ¡Éú³ÉÊ÷µÄÆğÊ¼¶¥µã£º \n");
-	char charStart;// ÆğÊ¼µã
+	print("è¯·è¾“å…¥æœ€å°ç”Ÿæˆæ ‘çš„èµ·å§‹é¡¶ç‚¹ï¼š \n");
+	char charStart;// èµ·å§‹ç‚¹
 	std::cin >> charStart;
 
-	while (getVextexPos(charStart) == -1)// ÆğÊ¼¶¥µã²âÊÔ
+	while (getVextexPos(charStart) == -1)// èµ·å§‹é¡¶ç‚¹æµ‹è¯•
 	{
-		print("ÄãÊäÈëµÄÆğÊ¼¶¥µã²»´æÔÚ£¬ÇëÖØĞÂÊäÈë£º\n");
+		print("ä½ è¾“å…¥çš„èµ·å§‹é¡¶ç‚¹ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š\n");
 		std::cin >> charStart;
 	}
 
-	int startV = getVextexPos(charStart);   // ÆğÊ¼¶¥µãºÅ
+	int startV = getVextexPos(charStart);   // èµ·å§‹é¡¶ç‚¹å·
 
-	int* lowcost = new int[V_Num()]; //lowcost[j]±íÊ¾ÕâÁ½¸öµãÖ®¼ä±ßµÄÈ¨Öµ
-	int* closest = new int[V_Num()];//closest[j]±íÊ¾V-UÖĞµÄ½Úµãjµ½¼¯ºÏUÖĞµÄ×îÁÙ½üµã
-	bool* inside = new bool[V_Num()];//inside[i]±íÊ¾µÚi¸ö½ÚµãÊÇ·ñÔÚ¼¯ºÏÀïÃæ
+	int* lowcost = new int[V_Num()]; //lowcost[j]è¡¨ç¤ºè¿™ä¸¤ä¸ªç‚¹ä¹‹é—´è¾¹çš„æƒå€¼
+	int* closest = new int[V_Num()];//closest[j]è¡¨ç¤ºV-Uä¸­çš„èŠ‚ç‚¹jåˆ°é›†åˆUä¸­çš„æœ€ä¸´è¿‘ç‚¹
+	bool* inside = new bool[V_Num()];//inside[i]è¡¨ç¤ºç¬¬iä¸ªèŠ‚ç‚¹æ˜¯å¦åœ¨é›†åˆé‡Œé¢
 
 	//init
 	for (int i = 0; i < V_Num(); i++)
 	{
-		inside[i] = _OUTSIDE_;//³õÊ¼¶¼ÔÚÍâÃæ£¨U_V¼¯ºÏ£©
+		inside[i] = _OUTSIDE_;//åˆå§‹éƒ½åœ¨å¤–é¢ï¼ˆU_Vé›†åˆï¼‰
 
 		if (i != startV)
 		{
@@ -409,14 +409,14 @@ void Graph_MST::MinSpanTree_Prim()
 	lowcost[startV] = 0;
 	inside[startV] = _INSIDE_;
 
-	int count = 0;             // ¼ÆÊı
+	int count = 0;             // è®¡æ•°
 
 	for (int i = 1; i < V_Num(); i++)
 	{
 		int minWeight = _MAXNUM_;
 		int v = startV;
 
-		for (int i = 0; i < V_Num(); i++) {//ÕÒµ½UÓëU_VÖ®¼ä×î¶ÌÂ·¾¶ÒÔ¼°¸ÃÂ·¾¶µÄÖÕµã
+		for (int i = 0; i < V_Num(); i++) {//æ‰¾åˆ°Uä¸U_Vä¹‹é—´æœ€çŸ­è·¯å¾„ä»¥åŠè¯¥è·¯å¾„çš„ç»ˆç‚¹
 			if (inside[i] == _OUTSIDE_ && lowcost[i] < minWeight)
 			{
 				v = i;
@@ -450,7 +450,7 @@ void Graph_MST::MinSpanTree_Prim()
 
 	}
 
-	std::cout << "Éú³ÉPrim×îĞ¡Éú³ÉÊ÷£¡\n";
+	std::cout << "ç”ŸæˆPrimæœ€å°ç”Ÿæˆæ ‘ï¼\n";
 
 	delete[] lowcost;
 	delete[] closest;
@@ -478,4 +478,4 @@ void Graph_MST::OutPutTree()
 	print("\n");
 }
 
-//Graph_MSTÊµÏÖ½áÊø
+//Graph_MSTå®ç°ç»“æŸ
