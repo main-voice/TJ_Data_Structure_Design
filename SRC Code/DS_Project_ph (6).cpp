@@ -1,5 +1,5 @@
-/*ÏîÄ¿Èı  ÓÂ´³ÃÔ¹¬ÓÎÏ·*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®ä¸‰  å‹‡é—¯è¿·å®«æ¸¸æˆ*/
+/* */
 
 
 #include <iostream>
@@ -11,7 +11,7 @@ const int DirectionNumber = 4;
 const int defaultMapRow = 7;
 const int defaultMapCol = 7;
 
-// \´ú±íÁ¬½ÓÏÂÒ»ĞĞ
+// \ä»£è¡¨è¿æ¥ä¸‹ä¸€è¡Œ
 const std::string defaultMap =
 "# # # # # # #\n\
 # 0 # 0 0 0 #\n\
@@ -22,8 +22,8 @@ const std::string defaultMap =
 # # # # # # #\n\
 ";
 
-//Êä³öĞÅÏ¢Àà
-class Log//ÓÃÓÚµ÷ÊÔÊä³öĞÅÏ¢µÄÀà,²»ĞèÒªÊµÀı»¯
+//è¾“å‡ºä¿¡æ¯ç±»
+class Log//ç”¨äºè°ƒè¯•è¾“å‡ºä¿¡æ¯çš„ç±»,ä¸éœ€è¦å®ä¾‹åŒ–
 {
 private:
 	Log() = delete;
@@ -44,7 +44,7 @@ public:
 	}
 };
 
-//ÃÔ¹¬Àà¶¨Òå
+//è¿·å®«ç±»å®šä¹‰
 class Stack;
 struct Position;//for the entrance position
 class Maze
@@ -68,18 +68,18 @@ public:
 
 
 	//find the way to get out the maze, the infomation is stored in the path stack
-	//(ÕÒµ½ÃÔ¹¬Â·¾¶£¬½«Â·¾¶ĞÅÏ¢´æ´¢ÔÚpathµÄstackÖĞ£©
-	//ertranceÊÇÈë¿Ú×ø±ê£¬exitÊÇ³ö¿Ú×ø±ê£¬currentÊÇµ±Ç°Î»ÖÃ
+	//(æ‰¾åˆ°è¿·å®«è·¯å¾„ï¼Œå°†è·¯å¾„ä¿¡æ¯å­˜å‚¨åœ¨pathçš„stackä¸­ï¼‰
+	//ertranceæ˜¯å…¥å£åæ ‡ï¼Œexitæ˜¯å‡ºå£åæ ‡ï¼Œcurrentæ˜¯å½“å‰ä½ç½®
 	bool seekPath(Stack& path, Position entrance, Position exit, Position current);
 
 private:
 	int   m_row;
 	int   m_col;
 	char* m_pMaze;
-	bool* m_mark;//±ê¼ÇÒ»¸öÎ»ÖÃÊÇ·ñÒÑ¾­±»Ì½Ë÷¹ı(Mark whether a location has been explored)
+	bool* m_mark;//æ ‡è®°ä¸€ä¸ªä½ç½®æ˜¯å¦å·²ç»è¢«æ¢ç´¢è¿‡(Mark whether a location has been explored)
 };
 
-//±íÊ¾×ø±êµÄ½á¹¹Ìå
+//è¡¨ç¤ºåæ ‡çš„ç»“æ„ä½“
 struct Position {
 	int x;
 	int y;
@@ -92,9 +92,9 @@ struct Position {
 
 	friend std::istream& operator>>(std::istream& input, Position& S);
 };
-//½á¹¹ÌåÉùÃ÷½áÊø
+//ç»“æ„ä½“å£°æ˜ç»“æŸ
 
-//Õ»
+//æ ˆ
 struct PosNode 
 {
 public:
@@ -119,15 +119,15 @@ public:
 private:
 	PosNode* m_top;
 };
-//Õ»ÉùÃ÷½áÊø
+//æ ˆå£°æ˜ç»“æŸ
 
 
-// ¹¤¾ßº¯ÊıÉùÃ÷
+// å·¥å…·å‡½æ•°å£°æ˜
 static bool checkNumber(int& input);
 
-//¼ì²âÊäÈëÖµ£¬y/YÎªyes£¬n/NÎªno
+//æ£€æµ‹è¾“å…¥å€¼ï¼Œy/Yä¸ºyesï¼Œn/Nä¸ºno
 static bool YesOrNo(char& yes);
-//¹¤¾ßº¯ÊıÉùÃ÷½áÊø
+//å·¥å…·å‡½æ•°å£°æ˜ç»“æŸ
 
 
 
@@ -138,38 +138,38 @@ int main()
 	Stack path;
 	Maze  maze(defaultMapRow, defaultMapCol);
 
-	cout << "Ä¬ÈÏµØÍ¼Îª:\n" << endl;
+	cout << "é»˜è®¤åœ°å›¾ä¸º:\n" << endl;
 	cout << defaultMap << endl;
 
 	maze.initMaze(defaultMap);
 	
 
-	cout << "ÇëÊäÈëÆğµã£¨Ä¬ÈÏµØÍ¼µÄÆğµãÎª(1,1)\n";
+	cout << "è¯·è¾“å…¥èµ·ç‚¹ï¼ˆé»˜è®¤åœ°å›¾çš„èµ·ç‚¹ä¸º(1,1)\n";
 	Position entrance;
 	cin >> entrance;
 
-	cout << "ÇëÊäÈëÖÕµã£¨Ä¬ÈÏµØÍ¼µÄÆğµãÎª(5,5)\n";
+	cout << "è¯·è¾“å…¥ç»ˆç‚¹ï¼ˆé»˜è®¤åœ°å›¾çš„èµ·ç‚¹ä¸º(5,5)\n";
 	Position exit;
 	cin >> exit;
 
 
-	std::cout << "ÃÔ¹¬Â·¾¶Îª£º\n";
+	std::cout << "è¿·å®«è·¯å¾„ä¸ºï¼š\n";
 
 	maze.seekPath(path, entrance, exit, entrance);
 	path.outPut();
 
-	std::cout << "\n\n°´»Ø³µ¼üÒÔÍË³ö\n";
+	std::cout << "\n\næŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 	std::cin.get();
 	std::cin.get();
 	return 0;
 }
 
 
-// --- ¹¤¾ßº¯ÊıÊµÏÖ ---
+// --- å·¥å…·å‡½æ•°å®ç° ---
 static bool checkNumber(int& input)
 {
 	while (std::cin.fail() || input < 0) {
-		std::cout << "´íÎóÊäÈë!ÇëÖØĞÂÊäÈë\n";
+		std::cout << "é”™è¯¯è¾“å…¥!è¯·é‡æ–°è¾“å…¥\n";
 		std::cin.clear();
 		std::cin.ignore(65535, '\n');
 		std::cin >> input;
@@ -191,15 +191,15 @@ static bool YesOrNo(char& yes)
 		}
 		else
 		{
-			std::cout << "ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë\n";
+			std::cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
 			std::cin >> yes;
 		}
 	}
 }
-// --- ¹¤¾ßº¯ÊıÊµÏÖ½áÊø ---
+// --- å·¥å…·å‡½æ•°å®ç°ç»“æŸ ---
 
 
-// --- ÃÔ¹¬ÀàÊµÏÖ --- 
+// --- è¿·å®«ç±»å®ç° --- 
 
 bool Maze::initMaze(const char* mapFileName)
 {
@@ -325,7 +325,7 @@ bool Maze::seekPath(Stack& path, Position entrance, Position exit, Position curr
 
 	if (current.x == entrance.x && current.y == entrance.y)
 	{
-		std::cout << "Ã»ÓĞÓĞĞ§Â·¾¶£¡\n";
+		std::cout << "æ²¡æœ‰æœ‰æ•ˆè·¯å¾„ï¼\n";
 	}
 	return false;
 }
@@ -334,20 +334,20 @@ bool Maze::seekPath(Stack& path, Position entrance, Position exit, Position curr
 std::istream& operator>>(std::istream& input, Position& Pos)
 {
 	using namespace std;
-	cout << "ÇëÊäÈëx×ø±ê" << endl;
+	cout << "è¯·è¾“å…¥xåæ ‡" << endl;
 	cin >> Pos.x;
 	checkNumber(Pos.x);
 
-	cout << "ÇëÊäÈëy×ø±ê" << endl;
+	cout << "è¯·è¾“å…¥yåæ ‡" << endl;
 	cin >> Pos.y;
 	checkNumber(Pos.y);
 	return input;
 }
 
-// --- ÃÔ¹¬ÀàÊµÏÖ½áÊø ---
+// --- è¿·å®«ç±»å®ç°ç»“æŸ ---
 
 
-// --- Õ»µÄÊµÏÖ --- 
+// --- æ ˆçš„å®ç° --- 
 void Stack::push(const PosNode& x)
 {
 	PosNode* newNode = new PosNode(x);
@@ -388,4 +388,4 @@ bool Stack::pop(PosNode& temp_store)
 	return true;
 }
 
-// --- Õ»ÊµÏÖ½áÊø ---
+// --- æ ˆå®ç°ç»“æŸ ---
