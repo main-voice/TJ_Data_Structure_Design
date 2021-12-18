@@ -1,15 +1,15 @@
-/*ÏîÄ¿Îå  ¹Ø¼ü×Ö¼ìË÷ÏµÍ³*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®äº”  å…³é”®å­—æ£€ç´¢ç³»ç»Ÿ*/
+/* */
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <algorithm>
-//Ö÷Òª²Ù×÷º¯Êı£¬ÔÚsrcfileµÄÎÄ±¾ÎÄ¼şÖĞ²éÑ¯target³öÏÖÁË¶àÉÙ´Î
+//ä¸»è¦æ“ä½œå‡½æ•°ï¼Œåœ¨srcfileçš„æ–‡æœ¬æ–‡ä»¶ä¸­æŸ¥è¯¢targetå‡ºç°äº†å¤šå°‘æ¬¡
 int  CountWord(const std::string& srcFile, std::string& target);
 void DeleteComma(std::string& txt);
-bool isLetter(char x) noexcept{//x ÊÇ·ñÊÇÒ»¸ö×ÖÄ¸
+bool isLetter(char x) noexcept{//x æ˜¯å¦æ˜¯ä¸€ä¸ªå­—æ¯
 	return x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z';
 }
 
@@ -17,42 +17,42 @@ int main()
 {
 	using namespace std;
 
-	cout << "ÇëÊäÈëÎÄ¼şÃû(×î¶à30¸ö×Ö·û£¬Ò»¸öÖĞÎÄÎªÁ½¸ö×Ö·û)£º\n";
+	cout << "è¯·è¾“å…¥æ–‡ä»¶å(æœ€å¤š30ä¸ªå­—ç¬¦ï¼Œä¸€ä¸ªä¸­æ–‡ä¸ºä¸¤ä¸ªå­—ç¬¦)ï¼š\n";
 	string srcName;
 	cin >> srcName;
 
 	fstream srcFile;
 	srcFile.open(srcName.c_str(), ios::out | ios::trunc);
 
-	/*µ±Í¬Ê±Ê¹ÓÃ cin >> , getline() Ê±£¬ĞèÒª×¢ÒâµÄÊÇ£¬ÔÚcin >> ÊäÈëÁ÷Íê³ÉÖ®ºó£¬getline()Ö®Ç°£¬ĞèÒªÍ¨¹ı
+	/*å½“åŒæ—¶ä½¿ç”¨ cin >> , getline() æ—¶ï¼Œéœ€è¦æ³¨æ„çš„æ˜¯ï¼Œåœ¨cin >> è¾“å…¥æµå®Œæˆä¹‹åï¼Œgetline()ä¹‹å‰ï¼Œéœ€è¦é€šè¿‡
 	str = "\n";
 	getline(cin, str);
-	µÄ·½Ê½½«»Ø³µ·û×÷ÎªÊäÈëÁ÷cinÒÔÇå³ı»º´æ£¬Èç¹û²»ÕâÑù×öµÄ»°£¬ÔÚ¿ØÖÆÌ¨ÉÏ¾Í²»»á³öÏÖgetline()µÄÊäÈëÌáÊ¾£¬¶øÖ±½ÓÌø¹ı£¬ÒòÎª³ÌĞòÄ¬ÈÏµØ½«Ö®Ç°µÄ±äÁ¿×÷ÎªÊäÈëÁ÷¡£*/
+	çš„æ–¹å¼å°†å›è½¦ç¬¦ä½œä¸ºè¾“å…¥æµcinä»¥æ¸…é™¤ç¼“å­˜ï¼Œå¦‚æœä¸è¿™æ ·åšçš„è¯ï¼Œåœ¨æ§åˆ¶å°ä¸Šå°±ä¸ä¼šå‡ºç°getline()çš„è¾“å…¥æç¤ºï¼Œè€Œç›´æ¥è·³è¿‡ï¼Œå› ä¸ºç¨‹åºé»˜è®¤åœ°å°†ä¹‹å‰çš„å˜é‡ä½œä¸ºè¾“å…¥æµã€‚*/
 
 	string get_a_char = string("\n");
 	getline(cin, get_a_char);
 
-	cout << "ÇëÊäÈëÒ»¶ÎÓ¢ÎÄ£º\n";
+	cout << "è¯·è¾“å…¥ä¸€æ®µè‹±æ–‡ï¼š\n";
 	string inputTxt;
 	getline(cin, inputTxt);
 
 	srcFile << inputTxt;
 	srcFile.close();
-	cout << "±¾¶ÎÎÄ±¾ÒÑ¾­±£³ÖÔÚ" << srcName << "ÖĞ\n";
-	cout << "ÇëÊäÈëÒª¼ìË÷µÄµ¥´Ê: ";
+	cout << "æœ¬æ®µæ–‡æœ¬å·²ç»ä¿æŒåœ¨" << srcName << "ä¸­\n";
+	cout << "è¯·è¾“å…¥è¦æ£€ç´¢çš„å•è¯: ";
 	string target;
 	cin >> target;
 
-	cout << "ÏÔÊ¾Ô´ÎÄ¼ş£º\n";
+	cout << "æ˜¾ç¤ºæºæ–‡ä»¶ï¼š\n";
 	cout << inputTxt << endl;
 
 	DeleteComma(inputTxt);
 	string store_target = target;
 
 	const int appear_num = CountWord(inputTxt, target);
-	cout << "ÔÚÔ´ÎÄ¼şÖĞ¹²¼ìË÷µ½£º " << appear_num << "¸ö¹Ø¼ü×Ö " << store_target;
+	cout << "åœ¨æºæ–‡ä»¶ä¸­å…±æ£€ç´¢åˆ°ï¼š " << appear_num << "ä¸ªå…³é”®å­— " << store_target;
 
-	std::cout << "\n\n°´»Ø³µ¼üÒÔÍË³ö\n";
+	std::cout << "\n\næŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 	std::cin.get();
 	std::cin.get();
 
@@ -63,16 +63,16 @@ int main()
 int CountWord(const std::string& srcFile, std::string& target)
 {
 	using namespace std;
-	string temp_word;//ÁÙÊ±´æ´¢µ¥¸öµ¥´Ê
+	string temp_word;//ä¸´æ—¶å­˜å‚¨å•ä¸ªå•è¯
 	transform(target.begin(), target.end(), target.begin(), ::toupper);
 
 	stringstream input(srcFile);
 	int count = 0;
-	//<sstream>¿â¶¨ÒåÁËÈıÖÖÀà£º
-	//istringstream¡¢ostringstreamºÍstringstream£¬·Ö±ğÓÃÀ´½øĞĞÁ÷µÄÊäÈë¡¢Êä³öºÍÊäÈëÊä³ö²Ù×÷
+	//<sstream>åº“å®šä¹‰äº†ä¸‰ç§ç±»ï¼š
+	//istringstreamã€ostringstreamå’Œstringstreamï¼Œåˆ†åˆ«ç”¨æ¥è¿›è¡Œæµçš„è¾“å…¥ã€è¾“å‡ºå’Œè¾“å…¥è¾“å‡ºæ“ä½œ
 	while (input >> temp_word)
 	{
-		//Í³Ò»´óĞ¡Ğ´
+		//ç»Ÿä¸€å¤§å°å†™
 		transform(temp_word.begin(), temp_word.end(), temp_word.begin(), ::toupper);
 
 		if (temp_word == target)
@@ -87,7 +87,7 @@ void DeleteComma(std::string& txt)
 {
 	using namespace std;
 
-	if(!isLetter(txt[txt.length() - 1]))//´¦Àí×îºóµÄ
+	if(!isLetter(txt[txt.length() - 1]))//å¤„ç†æœ€åçš„
 		txt[txt.length() - 1] = ' ';
 
 	int i = 0, j = 0;
@@ -99,7 +99,7 @@ void DeleteComma(std::string& txt)
 			(txt[i] >= 'a' && txt[i] <= 'z')
 			|| (txt[i] >= 'A' && txt[i] <= 'Z')
 			|| txt[i] == ' ';
-		if (trueCondition)//Ö»±£ÁôÓ¢ÎÄ´óĞ¡Ğ´×ÖÄ¸Óë¿Õ¸ñ
+		if (trueCondition)//åªä¿ç•™è‹±æ–‡å¤§å°å†™å­—æ¯ä¸ç©ºæ ¼
 		{
 			txt[j] = txt[i];
 			j++;
