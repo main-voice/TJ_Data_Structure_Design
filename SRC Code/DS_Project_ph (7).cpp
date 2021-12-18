@@ -1,13 +1,13 @@
-/*ÏîÄ¿ËÄ  N»ÊºóÎÊÌâ*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®å››  Nçš‡åé—®é¢˜*/
+/* */
 
 #include <iostream>
 
 using namespace std;
 #define DEBUG 0
 
-//Êä³öĞÅÏ¢Àà
-class Log//ÓÃÓÚµ÷ÊÔÊä³öĞÅÏ¢µÄÀà,²»ĞèÒªÊµÀı»¯
+//è¾“å‡ºä¿¡æ¯ç±»
+class Log//ç”¨äºè°ƒè¯•è¾“å‡ºä¿¡æ¯çš„ç±»,ä¸éœ€è¦å®ä¾‹åŒ–
 {
 private:
 	Log() = delete;
@@ -28,7 +28,7 @@ public:
 	}
 };
 
-//ÆåÅÌÀàÉùÃ÷
+//æ£‹ç›˜ç±»å£°æ˜
 
 class ChessBoard
 {
@@ -54,19 +54,19 @@ private:
 
 	bool* m_pChessboard;
 };
-//ÆåÅÌÀàÉùÃ÷½áÊø
+//æ£‹ç›˜ç±»å£°æ˜ç»“æŸ
 
 
 
 int main()
 {
-	cout << "ÏÖÓĞN x N µÄÆåÅÌ£¬·ÅÈëN¸ö»Êºó£¬ÒªÇóËùÓĞ»Êºó²»ÔÚÍ¬Ò»ĞĞ¡¢ÁĞºÍÍ¬Ò»Ğ±ÏßÉÏ£¡\n\n";
-	cout << "ÇëÊäÈë»Êºó¸öÊı:";
+	cout << "ç°æœ‰N x N çš„æ£‹ç›˜ï¼Œæ”¾å…¥Nä¸ªçš‡åï¼Œè¦æ±‚æ‰€æœ‰çš‡åä¸åœ¨åŒä¸€è¡Œã€åˆ—å’ŒåŒä¸€æ–œçº¿ä¸Šï¼\n\n";
+	cout << "è¯·è¾“å…¥çš‡åä¸ªæ•°:";
 	int queen_number = 0;
 	cin >> queen_number;
 
 	while (cin.fail() || queen_number <= 0) {
-		cout << "ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£º\n";
+		cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š\n";
 		cin.clear();
 		cin.ignore(65535, '\n');
 		cin >> queen_number;
@@ -76,12 +76,12 @@ int main()
 
 	ChessBoard chess = ChessBoard(queen_number);
 
-	cout << "»Êºó°Ú·¨\n\n";
+	cout << "çš‡åæ‘†æ³•\n\n";
 	chess.PlaceQueen(0);//begin with the first line
 
-	cout << "°Ë»ÊºóÎÊÌâ¹²ÓĞ" << chess.GetSlnNum() << "ÖÖ½â£¡" << endl;
+	cout << "å…«çš‡åé—®é¢˜å…±æœ‰" << chess.GetSlnNum() << "ç§è§£ï¼" << endl;
 
-	std::cout << "°´»Ø³µ¼üÒÔÍË³ö\n";
+	std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 	std::cin.get();
 	std::cin.get();
 
@@ -89,10 +89,10 @@ int main()
 }
 
 
-//ÆåÅÌÀàÊµÏÖ
+//æ£‹ç›˜ç±»å®ç°
 
 #if DEBUG
-#include "Log.h" // ×¢Òâ£¬ÓÉÓÚÌá½»ÎÄ¼şÊ±½«Ô­ÓĞ´úÂë·ÅÔÚÒ»¸öcppÄÚ£¬Òò´Ë¸Ã´¦ÎŞĞ§
+#include "Log.h" // æ³¨æ„ï¼Œç”±äºæäº¤æ–‡ä»¶æ—¶å°†åŸæœ‰ä»£ç æ”¾åœ¨ä¸€ä¸ªcppå†…ï¼Œå› æ­¤è¯¥å¤„æ— æ•ˆ
 #endif // DEBUG
 
 #define Placed   true
@@ -118,7 +118,7 @@ ChessBoard::ChessBoard(int queen)
 void ChessBoard::OutPut()
 {
 	m_sln++;
-	cout << "µÚ" << m_sln << "ÖÖ½â·¨£º\n\n";
+	cout << "ç¬¬" << m_sln << "ç§è§£æ³•ï¼š\n\n";
 	bool* p = m_pChessboard;
 	for (int i = 0; i < m_queen * m_queen; i++) {
 		if (*p == Placed) {
@@ -183,7 +183,7 @@ bool ChessBoard::Check(int row, int col)
 	}
 
 	int x = row, y = col;
-	//check the diagonal(¶Ô½ÇÏß), four direction
+	//check the diagonal(å¯¹è§’çº¿), four direction
 	//1. left_above
 	x--;
 	y--;
@@ -273,4 +273,4 @@ bool ChessBoard::ifInside(int row, int col)
 }
 
 
-//ÆåÅÌÀàÊµÏÖ½áÊø
+//æ£‹ç›˜ç±»å®ç°ç»“æŸ
