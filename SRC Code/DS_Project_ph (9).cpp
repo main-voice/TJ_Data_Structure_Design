@@ -1,12 +1,12 @@
-/*ÏîÄ¿Áù  ¼ÒÆ×¹ÜÀíÏµÍ³*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®å…­  å®¶è°±ç®¡ç†ç³»ç»Ÿ*/
+/* */
 
 #include <iostream>
 #include <string>
 
-//--- Àà¶¨Òå  ---
+//--- ç±»å®šä¹‰  ---
 
-//1.¼ÒÍ¥³ÉÔ±Àà
+//1.å®¶åº­æˆå‘˜ç±»
 const bool Alive = true;
 const bool Dead = false;
 
@@ -44,7 +44,7 @@ public:
 };
 
  
-//2.Ê÷½ÚµãÀà
+//2.æ ‘èŠ‚ç‚¹ç±»
 
 class TreeNode
 {
@@ -80,13 +80,13 @@ public:
 
 private:
 
-	pMember member;//Ö¸Ïò´Ë½ÚµãÏÂµÄ³ÉÔ±
-	pNode   parent;//Ö¸Ïò¸¸½Úµã
-	pNode   firstChild;//Ö¸ÏòµÚÒ»¸öº¢×Ó
-	pNode   nextSibling;//Ö¸ÏòÏÂÒ»¸öĞÖµÜ½ãÃÃ
+	pMember member;//æŒ‡å‘æ­¤èŠ‚ç‚¹ä¸‹çš„æˆå‘˜
+	pNode   parent;//æŒ‡å‘çˆ¶èŠ‚ç‚¹
+	pNode   firstChild;//æŒ‡å‘ç¬¬ä¸€ä¸ªå­©å­
+	pNode   nextSibling;//æŒ‡å‘ä¸‹ä¸€ä¸ªå…„å¼Ÿå§å¦¹
 };
 
-//3.Ê÷Àà
+//3.æ ‘ç±»
 
 class Tree
 {
@@ -98,9 +98,9 @@ public:
 	Tree(const std::string name);
 	~Tree() { Destory(root); }
 
-	void Destory(pNode p);//É¾³ıÒÔpÎª¸ù½ÚµãµÄ×ÓÊ÷
+	void Destory(pNode p);//åˆ é™¤ä»¥pä¸ºæ ¹èŠ‚ç‚¹çš„å­æ ‘
 
-	pNode getRoot()const { return root; }//·µ»Ø¸ù½Úµã
+	pNode getRoot()const { return root; }//è¿”å›æ ¹èŠ‚ç‚¹
 	pNode Find(const std::string& target)
 	{
 		return Find(root, target);
@@ -114,7 +114,7 @@ public:
 	bool  Remove(const std::string& target, int& tag) {
 		pNode p_target = Locate(target);
 		if (p_target == NULL) {
-			std::cout << "²»´æÔÚ´ËÈË  ";
+			std::cout << "ä¸å­˜åœ¨æ­¤äºº  ";
 			return false;
 		}
 		if (Remove(p_target, target, tag)) {
@@ -134,14 +134,14 @@ public:
 		pNode p_target = Locate(target);
 		if (p_target == NULL)
 		{
-			std::cout << "²éÕÒÄ¿±êÊ§°Ü£¡ÇëÖØÊÔ\n";
+			std::cout << "æŸ¥æ‰¾ç›®æ ‡å¤±è´¥ï¼è¯·é‡è¯•\n";
 			return false;
 		}
 		if (createFamily(p_target, target))
 		{
 			return true;
 		}
-		std::cout << "´´½¨¼ÒÍ¥Ê§°Ü, ÇëÖØÊÔ\n";
+		std::cout << "åˆ›å»ºå®¶åº­å¤±è´¥, è¯·é‡è¯•\n";
 		return false;;
 	}
 	bool  modifyName(const std::string& target);
@@ -156,23 +156,23 @@ public:
 private:
 	pNode root;
 
-	//ÔÚÒÔpÎª¸ù½ÚµãµÄ×ÓÊ÷ÀïÃæÑ°ÕÒµ½Ãû³ÆÎªtargetµÄ½Úµã
+	//åœ¨ä»¥pä¸ºæ ¹èŠ‚ç‚¹çš„å­æ ‘é‡Œé¢å¯»æ‰¾åˆ°åç§°ä¸ºtargetçš„èŠ‚ç‚¹
 	pNode Find(pNode p, const std::string& target);
 	pNode Locate(pNode p, const std::string& target);
 
-	//ÔÚtarget½ÚµãÏÂÃæÌí¼Óº¢×Ó
+	//åœ¨targetèŠ‚ç‚¹ä¸‹é¢æ·»åŠ å­©å­
 	bool  addKid(pNode p, const std::string& target);
-	//ÔÚtarget½ÚµãÏÂÃæ´´½¨¼ÒÍ¥
+	//åœ¨targetèŠ‚ç‚¹ä¸‹é¢åˆ›å»ºå®¶åº­
 	bool  createFamily(pNode p, const std::string& target);
-	//É¾³ıtarget½ÚµãÒÔ¼°×Ó½Úµã£¬tagÊÇ±êÊ¶ÊÇ·ñÕû¸ö¼Ò×å¶¼±»É¾³ı
+	//åˆ é™¤targetèŠ‚ç‚¹ä»¥åŠå­èŠ‚ç‚¹ï¼Œtagæ˜¯æ ‡è¯†æ˜¯å¦æ•´ä¸ªå®¶æ—éƒ½è¢«åˆ é™¤
 	bool  Remove(pNode p, const std::string& target, int& tag);
-	//´òÓ¡ÒÔpÎª¸¸½ÚµãµÄµÚÒ»´úº¢×ÓµÄĞÅÏ¢
+	//æ‰“å°ä»¥pä¸ºçˆ¶èŠ‚ç‚¹çš„ç¬¬ä¸€ä»£å­©å­çš„ä¿¡æ¯
 	bool  PrintKid(const pNode p, const std::string& target);
 };
 
-//4.Êä³öĞÅÏ¢Àà
+//4.è¾“å‡ºä¿¡æ¯ç±»
 
-class Log//ÓÃÓÚµ÷ÊÔÊä³öĞÅÏ¢µÄÀà,²»ĞèÒªÊµÀı»¯
+class Log//ç”¨äºè°ƒè¯•è¾“å‡ºä¿¡æ¯çš„ç±»,ä¸éœ€è¦å®ä¾‹åŒ–
 {
 private:
 	Log() = delete;
@@ -195,11 +195,11 @@ public:
 };
 
 
-//--- Àà¶¨Òå½áÊø  ---
+//--- ç±»å®šä¹‰ç»“æŸ  ---
 
 typedef TreeNode* pNode;
 
-//¹¤¾ßº¯Êı
+//å·¥å…·å‡½æ•°
 template<typename T>
 static inline void print(const T& message)
 {
@@ -209,21 +209,21 @@ static inline void print(const T& message)
 void inline menu()
 {
 	print("========================================\n");
-	print("**        ÇëÑ¡ÔñÒªÖ´ĞĞµÄ²Ù×÷£º        **\n");
-	print("**        A/a --- ÍêÉÆ¼ÒÆ×            **\n");
-	print("**        B/b --- Ìí¼Ó¼ÒÍ¥³ÉÔ±        **\n");
-	print("**        C/c --- ½âÉ¢¾Ö²¿¼ÒÍ¥        **\n");
-	print("**        D/d --- ¸ü¸Ä¼ÒÍ¥³ÉÔ±ĞÕÃû    **\n");
-	print("**        E/e --- ÍË³ö³ÌĞò            **\n");
-	print("**        F/f --- µÚÒ»´úº¢×Ó          **\n");
-	print("**        G/g --- Ë«Ç×½áµã            **\n");//ºóÁ½ÏîÎªÍØÕ¹Ïî
-	print("**        H/h --- ÇåÆÁ                **\n");
-	print("**×¢£º½âÉ¢¾Ö²¿¼ÒÍ¥Ö¸É¾³ı¸Ã½ÚµãÒÔ¼°×Ó½Ú**\n");
-	print("**µã£¬ÆäĞÖµÜ½Úµã×÷ÏàÓ¦µ÷Õû            **\n");
+	print("**        è¯·é€‰æ‹©è¦æ‰§è¡Œçš„æ“ä½œï¼š        **\n");
+	print("**        A/a --- å®Œå–„å®¶è°±            **\n");
+	print("**        B/b --- æ·»åŠ å®¶åº­æˆå‘˜        **\n");
+	print("**        C/c --- è§£æ•£å±€éƒ¨å®¶åº­        **\n");
+	print("**        D/d --- æ›´æ”¹å®¶åº­æˆå‘˜å§“å    **\n");
+	print("**        E/e --- é€€å‡ºç¨‹åº            **\n");
+	print("**        F/f --- ç¬¬ä¸€ä»£å­©å­          **\n");
+	print("**        G/g --- åŒäº²ç»“ç‚¹            **\n");//åä¸¤é¡¹ä¸ºæ‹“å±•é¡¹
+	print("**        H/h --- æ¸…å±                **\n");
+	print("**æ³¨ï¼šè§£æ•£å±€éƒ¨å®¶åº­æŒ‡åˆ é™¤è¯¥èŠ‚ç‚¹ä»¥åŠå­èŠ‚**\n");
+	print("**ç‚¹ï¼Œå…¶å…„å¼ŸèŠ‚ç‚¹ä½œç›¸åº”è°ƒæ•´            **\n");
 	print("========================================\n");
 }
 
-// ¹¤¾ßº¯Êı½áÊø
+// å·¥å…·å‡½æ•°ç»“æŸ
 int main()
 {
 	using namespace std;
@@ -233,32 +233,32 @@ int main()
 
 	menu();
 
-	print("Ê×ÏÈ½¨Á¢Ò»¸ö¼ÒÆ×£¡\n");
-	print("ÇëÊäÈë×æÏÈµÄĞÕÃû: ");
+	print("é¦–å…ˆå»ºç«‹ä¸€ä¸ªå®¶è°±ï¼\n");
+	print("è¯·è¾“å…¥ç¥–å…ˆçš„å§“å: ");
 
 	cin >> temp_str;
 	Tree* family_tree = new Tree(temp_str);
 
-	print("´Ë¼ÒÆ×µÄ×æÏÈÊÇ£º");
+	print("æ­¤å®¶è°±çš„ç¥–å…ˆæ˜¯ï¼š");
 	cout << family_tree->getRoot()->getMember()->getName() << "\n\n";
 
 	char choice;
-	int tag = 0;//¼ì²âÊÇ·ñ°ÑÕû¸ö¼Ò×åÈ«É¾ÁË
+	int tag = 0;//æ£€æµ‹æ˜¯å¦æŠŠæ•´ä¸ªå®¶æ—å…¨åˆ äº†
 	while (1)
 	{
 
 		if (tag == 1)
 		{
-			print("ÄúÒÑ¾­É¾³ıÕû¸ö¼Ò×å£¬ÇëÖØĞÂ¹¹½¨¼Ò×å¡£ÇëÊäÈë×æÏÈĞÕÃû: ");
+			print("æ‚¨å·²ç»åˆ é™¤æ•´ä¸ªå®¶æ—ï¼Œè¯·é‡æ–°æ„å»ºå®¶æ—ã€‚è¯·è¾“å…¥ç¥–å…ˆå§“å: ");
 			cin >> temp_str;
 			family_tree = new Tree(temp_str);
-			print("ĞÂ¼Ò×åµÄ×æÏÈÊÇ£º");
+			print("æ–°å®¶æ—çš„ç¥–å…ˆæ˜¯ï¼š");
 			print(temp_str);
 			print("\n");
 			tag = 0;
 		}
 
-		print("ÇëÑ¡ÔñÒªÖ´ĞĞµÄ²Ù×÷: ");
+		print("è¯·é€‰æ‹©è¦æ‰§è¡Œçš„æ“ä½œ: ");
 		cin >> choice;
 
 		switch (choice)
@@ -266,7 +266,7 @@ int main()
 		case 'a':
 		case 'A':
 		{
-			print("ÇëÊäÈëÒª½¨Á¢¼ÒÍ¥µÄÈËµÄĞÕÃû£º");
+			print("è¯·è¾“å…¥è¦å»ºç«‹å®¶åº­çš„äººçš„å§“åï¼š");
 			cin >> temp_str;
 			if (family_tree->createFamily(temp_str))
 			{
@@ -278,7 +278,7 @@ int main()
 		case 'b':
 		case 'B':
 		{
-			print("ÇëÊäÈëÒªÌí¼Ó¶ù×Ó£¨»òÅ®¶ù£©µÄÈËµÄĞÕÃû£º");
+			print("è¯·è¾“å…¥è¦æ·»åŠ å„¿å­ï¼ˆæˆ–å¥³å„¿ï¼‰çš„äººçš„å§“åï¼š");
 			cin >> temp_str;
 			if (family_tree->addKid(temp_str))
 			{
@@ -290,28 +290,28 @@ int main()
 		case 'c':
 		case 'C':
 		{
-			print("ÇëÊäÈëÒª½âÉ¢¼ÒÍ¥µÄ³ÉÔ±Ãû×Ö£º");
+			print("è¯·è¾“å…¥è¦è§£æ•£å®¶åº­çš„æˆå‘˜åå­—ï¼š");
 			cin >> temp_str;
-			print("Òª½âÉ¢¼ÒÍ¥µÄÈËÊÇ£º");
+			print("è¦è§£æ•£å®¶åº­çš„äººæ˜¯ï¼š");
 			cout << temp_str << endl;
 
 			(family_tree->Remove(temp_str, tag))
-				? print("½âÉ¢³É¹¦!\n") : print("½âÉ¢Ê§°Ü\n");
+				? print("è§£æ•£æˆåŠŸ!\n") : print("è§£æ•£å¤±è´¥\n");
 
 			break;
 		}
 		case 'd':
 		case 'D':
 		{
-			print("ÇëÊäÈëÒªĞŞ¸ÄĞÕÃûÕßµÄÔ­ĞÕÃû£º");
+			print("è¯·è¾“å…¥è¦ä¿®æ”¹å§“åè€…çš„åŸå§“åï¼š");
 			cin >> temp_str;
 			if (family_tree->modifyName(temp_str))
 			{
-				print("ĞŞ¸Ä³É¹¦£¡\n");
+				print("ä¿®æ”¹æˆåŠŸï¼\n");
 			}
 			else
 			{
-				print("ĞŞ¸ÄÊ§°Ü! \n");
+				print("ä¿®æ”¹å¤±è´¥! \n");
 			}
 			print("\n\n");
 			break;
@@ -322,7 +322,7 @@ int main()
 			if (family_tree)
 				delete family_tree;
 
-			std::cout << "°´»Ø³µ¼üÒÔÍË³ö\n";
+			std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 			std::cin.get();
 			std::cin.get();
 			return 0;
@@ -330,7 +330,7 @@ int main()
 		case 'f':
 		case 'F':
 		{
-			print("ÇëÊäÈë¸¸½ÚµãµÄĞÕÃû£º");
+			print("è¯·è¾“å…¥çˆ¶èŠ‚ç‚¹çš„å§“åï¼š");
 			cin >> temp_str;
 			family_tree->PrintKid(temp_str);
 			print("\n\n");
@@ -340,14 +340,14 @@ int main()
 		case 'g':
 		case 'G':
 		{
-			print("ÇëÊäÈëÆäÖĞÒ»¸ö×Ó½ÚµãµÄÃû×Ö: ");
+			print("è¯·è¾“å…¥å…¶ä¸­ä¸€ä¸ªå­èŠ‚ç‚¹çš„åå­—: ");
 			cin >> temp_str;
 			temp_pNode = family_tree->Parent(temp_str);
 			if (temp_pNode == NULL)
 			{
 				break;
 			}
-			cout << "¸¸½ÚµãµÄÃû×ÖÎª£º";
+			cout << "çˆ¶èŠ‚ç‚¹çš„åå­—ä¸ºï¼š";
 			cout << temp_pNode->getMember()->getName();
 			print("\n\n");
 
@@ -362,7 +362,7 @@ int main()
 		}
 		default:
 		{
-			cout << "ÊäÈë´íÎó£¬";
+			cout << "è¾“å…¥é”™è¯¯ï¼Œ";
 			continue;
 		}
 		}
@@ -370,26 +370,26 @@ int main()
 }
 
 
-// --- Àà³ÉÔ±º¯ÊıÊµÏÖ ---
+// --- ç±»æˆå‘˜å‡½æ•°å®ç° ---
 
-//1.¼ÒÍ¥³ÉÔ±Àà
+//1.å®¶åº­æˆå‘˜ç±»
 
 FamilyMember::FamilyMember()
-	:m_name("ÎŞÃûÕß"), m_sex("Î´ÖªĞÔ±ğ")
+	:m_name("æ— åè€…"), m_sex("æœªçŸ¥æ€§åˆ«")
 {
-	m_ifAlive = Alive;//Ä¬ÈÏÉúÕß
+	m_ifAlive = Alive;//é»˜è®¤ç”Ÿè€…
 }
 
 FamilyMember::FamilyMember(const String& name)
-	: m_name(name), m_sex("Î´ÖªĞÔ±ğ")
+	: m_name(name), m_sex("æœªçŸ¥æ€§åˆ«")
 {
-	m_ifAlive = Alive;//Ä¬ÈÏÉúÕß
+	m_ifAlive = Alive;//é»˜è®¤ç”Ÿè€…
 }
 
 FamilyMember::FamilyMember(const String& name, const String& sex)
 	: m_name(name), m_sex(sex)
 {
-	m_ifAlive = Alive;//Ä¬ÈÏÉúÕß
+	m_ifAlive = Alive;//é»˜è®¤ç”Ÿè€…
 }
 
 FamilyMember::FamilyMember(const String& name, const String& sex, bool health)
@@ -420,7 +420,7 @@ const std::string& FamilyMember::getName() const
 
 bool FamilyMember::modifyName(const String& newName)
 {
-	if (newName == m_name)//ÈôÃû×ÖÒÑ¾­ÊÇÒªĞŞ¸ÄµÄÃû×Ö£¬ÔòÃ»±ØÒªĞŞ¸Ä
+	if (newName == m_name)//è‹¥åå­—å·²ç»æ˜¯è¦ä¿®æ”¹çš„åå­—ï¼Œåˆ™æ²¡å¿…è¦ä¿®æ”¹
 	{
 		return false;
 	}
@@ -442,9 +442,9 @@ std::ostream& operator>>(std::ostream& input, FamilyMember& member)
 	member.setName(tem_name);
 	return input;
 }
-// --- ¼ÒÍ¥³ÉÔ±ÀàÊµÏÖ½áÊø
+// --- å®¶åº­æˆå‘˜ç±»å®ç°ç»“æŸ
 
-// 2.Ê÷ÀàÊµÏÖ
+// 2.æ ‘ç±»å®ç°
 
 typedef TreeNode* pNode;
 
@@ -467,12 +467,12 @@ pNode Tree::Parent(const std::string& target)
 	pNode p_target = Locate(target);
 	if (p_target == NULL)
 	{
-		std::cout << "²éÕÒÄ¿±êÊ§°Ü£¡ÇëÖØÊÔ\n";
+		std::cout << "æŸ¥æ‰¾ç›®æ ‡å¤±è´¥ï¼è¯·é‡è¯•\n";
 		return NULL;
 	}
 	if (p_target == root)
 	{
-		std::cout << "´ËÎª¸ù½Úµã£¡Ã»ÓĞ¸¸½Úµã\n";
+		std::cout << "æ­¤ä¸ºæ ¹èŠ‚ç‚¹ï¼æ²¡æœ‰çˆ¶èŠ‚ç‚¹\n";
 		return NULL;
 	}
 	return p_target->parent;
@@ -483,11 +483,11 @@ bool Tree::modifyName(const std::string& target)
 	pNode p_target = Find(root, target);
 	if (p_target == NULL)
 	{
-		print("²éÕÒÄ¿±êÊ§°Ü£¡ÇëÖØÊÔ\n");
+		print("æŸ¥æ‰¾ç›®æ ‡å¤±è´¥ï¼è¯·é‡è¯•\n");
 		return false;
 	}
 
-	print("ÇëÊäÈëĞÂÃû×Ö: ");
+	print("è¯·è¾“å…¥æ–°åå­—: ");
 	std::string newName;
 	std::cin >> newName;
 
@@ -529,7 +529,7 @@ pNode Tree::Locate(pNode p, const std::string& target)
 	}
 	else
 	{
-		//ÈôÎŞ±¸·İÖ¸Õë£¬ÔòÔÚ¾­ÀúÉÏÃæÓï¾äºó£¬pÒÑ¾­ÊÇ¿ÕÖ¸Õë£¬×ÔÈ»Ò²ÎŞĞÖµÜÖ¸Õë¿ÉÑÔ
+		//è‹¥æ— å¤‡ä»½æŒ‡é’ˆï¼Œåˆ™åœ¨ç»å†ä¸Šé¢è¯­å¥åï¼Œpå·²ç»æ˜¯ç©ºæŒ‡é’ˆï¼Œè‡ªç„¶ä¹Ÿæ— å…„å¼ŸæŒ‡é’ˆå¯è¨€
 		return Locate(backup->nextSibling, target);
 	}
 }
@@ -541,13 +541,13 @@ bool Tree::addKid(pNode p, const std::string& target)
 
 	if (p_target == NULL)
 	{
-		Log::Warn("²éÎŞ´ËÈË£¬ÇëÖØĞÂÊäÈë");
+		Log::Warn("æŸ¥æ— æ­¤äººï¼Œè¯·é‡æ–°è¾“å…¥");
 		return false;
 	}
 
 	if (p_target->firstChild == NULL)
 	{
-		print("¸Ã³ÉÔ±ÉĞÎ´´´½¨¼ÒÍ¥£¬ÊÇ·ñ¸ÄÎª´´½¨¼ÒÍ¥?(y/Y--yes, n/N--no\n");
+		print("è¯¥æˆå‘˜å°šæœªåˆ›å»ºå®¶åº­ï¼Œæ˜¯å¦æ”¹ä¸ºåˆ›å»ºå®¶åº­?(y/Y--yes, n/N--no\n");
 
 		char yesOrNo = 'y';
 		std::cin >> yesOrNo;
@@ -567,15 +567,15 @@ bool Tree::addKid(pNode p, const std::string& target)
 		}
 	}
 
-	//µ½´Ë´¦Ôò±Ø¶¨ÒÑ¾­ÓĞÒ»¸öº¢×Ó
+	//åˆ°æ­¤å¤„åˆ™å¿…å®šå·²ç»æœ‰ä¸€ä¸ªå­©å­
 	pNode current = p_target->firstChild;
 
-	while (current->nextSibling != NULL)//Èô½öÓĞÒ»¸öº¢×Ó£¬Ôò²»»á½øÈë´ËÑ­»·
+	while (current->nextSibling != NULL)//è‹¥ä»…æœ‰ä¸€ä¸ªå­©å­ï¼Œåˆ™ä¸ä¼šè¿›å…¥æ­¤å¾ªç¯
 	{
-		current = current->nextSibling;//ÕÒµ½×îºóÒ»¸öĞÖµÜ
+		current = current->nextSibling;//æ‰¾åˆ°æœ€åä¸€ä¸ªå…„å¼Ÿ
 	}
 
-	cout << "ÇëÊäÈë" << target << "ĞÂÌí¼ÓµÄ¶ù×Ó£¨»òÅ®¶ù£©µÄÃû×Ö£º";
+	cout << "è¯·è¾“å…¥" << target << "æ–°æ·»åŠ çš„å„¿å­ï¼ˆæˆ–å¥³å„¿ï¼‰çš„åå­—ï¼š";
 
 	string newkid_name;
 	cin >> newkid_name;
@@ -601,12 +601,12 @@ bool Tree::createFamily(pNode p, const std::string& target)
 
 	if (p_target == NULL)
 	{
-		Log::Warn("²éÎŞ´ËÈË£¬ÇëÖØĞÂÊäÈë");
+		Log::Warn("æŸ¥æ— æ­¤äººï¼Œè¯·é‡æ–°è¾“å…¥");
 		return false;
 	}
 	if (p_target->firstChild != NULL)
 	{
-		std::cout << "¸Ã³ÉÔ±ÒÑÓĞ¼ÒÍ¥£¬ÊÇ·ñ¸ÄÎªÌí¼Ó¼ÒÍ¥³ÉÔ±?(y/Y--yes, n/N--no\n";
+		std::cout << "è¯¥æˆå‘˜å·²æœ‰å®¶åº­ï¼Œæ˜¯å¦æ”¹ä¸ºæ·»åŠ å®¶åº­æˆå‘˜?(y/Y--yes, n/N--no\n";
 		char yesOrNo = 'y';
 		std::cin >> yesOrNo;
 
@@ -620,28 +620,28 @@ bool Tree::createFamily(pNode p, const std::string& target)
 		}
 	}
 
-	cout << "ÇëÊäÈë" << target << "µÄ¶ùÅ®ÈËÊı(ÈËÊıÓ¦´óÓÚ0)\n";
+	cout << "è¯·è¾“å…¥" << target << "çš„å„¿å¥³äººæ•°(äººæ•°åº”å¤§äº0)\n";
 	int kid_num = 0;
 
 	cin >> kid_num;
 
 	while (cin.fail() || kid_num < 1)
 	{
-		print("ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£º");
+		print("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š");
 		cin.clear();
 		cin.ignore(65535, '\n');
 		cin >> kid_num;
 	}
-	cout << "ÇëÒÀ´ÎÊäÈë" << target << "µÄ¶ùÅ®µÄĞÕÃû£º";
+	cout << "è¯·ä¾æ¬¡è¾“å…¥" << target << "çš„å„¿å¥³çš„å§“åï¼š";
 
 	string str_name;
-	pNode before = NULL;//±ÜÃâÌí¼ÓĞÖµÜÊ±²»¶ÏÑ­»·²éÕÒ×îºóÒ»¸öĞÖµÜ
+	pNode before = NULL;//é¿å…æ·»åŠ å…„å¼Ÿæ—¶ä¸æ–­å¾ªç¯æŸ¥æ‰¾æœ€åä¸€ä¸ªå…„å¼Ÿ
 	pNode newChild = NULL;
 
 	while (kid_num--)
 	{
 		cin >> str_name;
-		newChild = new TreeNode(str_name, p);//ĞÂº¢×ÓµÄ¸¸½Úµã¶¼ÊÇp
+		newChild = new TreeNode(str_name, p);//æ–°å­©å­çš„çˆ¶èŠ‚ç‚¹éƒ½æ˜¯p
 
 		if (newChild == NULL)
 		{
@@ -653,7 +653,7 @@ bool Tree::createFamily(pNode p, const std::string& target)
 		{
 			//Log::Info("create the first child");
 			p->firstChild = newChild;
-			before = newChild;//¶ÔÓÚÏÂÒ»´ÎÀ´Ëµ£¬±¾´ÎµÄĞÂº¢×ÓÊÇÇ°Ò»¸öĞÖµÜ
+			before = newChild;//å¯¹äºä¸‹ä¸€æ¬¡æ¥è¯´ï¼Œæœ¬æ¬¡çš„æ–°å­©å­æ˜¯å‰ä¸€ä¸ªå…„å¼Ÿ
 			continue;
 		}
 		else
@@ -671,7 +671,7 @@ bool Tree::Remove(pNode p, const std::string& target, int& tag)
 {
 	if (p == root)
 	{
-		print("Äú¼´½«É¾³ıÕû¸ö¼ÒÆ×£¬É¾³ıºó±ØĞëÖØĞÂ¹¹½¨¼ÒÆ×£¬ÊÇ·ñ¼ÌĞø£¿(y/Y--yes , n/N--no)");
+		print("æ‚¨å³å°†åˆ é™¤æ•´ä¸ªå®¶è°±ï¼Œåˆ é™¤åå¿…é¡»é‡æ–°æ„å»ºå®¶è°±ï¼Œæ˜¯å¦ç»§ç»­ï¼Ÿ(y/Y--yes , n/N--no)");
 		char yesOrNo = 'y';
 		std::cin >> yesOrNo;
 
@@ -688,10 +688,10 @@ bool Tree::Remove(pNode p, const std::string& target, int& tag)
 		}
 	}
 
-	if (p->parent->firstChild == p && p->nextSibling == NULL)//pÊÇ¸¸½ÚµãµÄÎ¨Ò»Ò»¸öº¢×Ó
+	if (p->parent->firstChild == p && p->nextSibling == NULL)//pæ˜¯çˆ¶èŠ‚ç‚¹çš„å”¯ä¸€ä¸€ä¸ªå­©å­
 	{
 		Destory(p->firstChild);
-		p->parent->firstChild = NULL;//¸¸½ÚµãÃ»ÓĞº¢×ÓÁË
+		p->parent->firstChild = NULL;//çˆ¶èŠ‚ç‚¹æ²¡æœ‰å­©å­äº†
 		delete p;
 		return true;
 	}
@@ -699,28 +699,28 @@ bool Tree::Remove(pNode p, const std::string& target, int& tag)
 	if (p->parent->firstChild == p)//delete the first child
 	{
 		Destory(p->firstChild);
-		p->parent->firstChild = p->nextSibling;//¸¸½ÚµãµÄµÚÒ»¸öº¢×Ó±ä³ÉÁË¶şµÜ
+		p->parent->firstChild = p->nextSibling;//çˆ¶èŠ‚ç‚¹çš„ç¬¬ä¸€ä¸ªå­©å­å˜æˆäº†äºŒå¼Ÿ
 		delete p;
 		return true;
 	}
 
-	//ÒÔÏÂÁ½ÖÖÇé¿ö¶¼ĞèÒªÓÃµ½pµÄÇ°Ò»¸öĞÖµÜ£¬Òò´ËĞèÒªÑ­»·ÕÒµ½Ç°Ò»¸öĞÖµÜ
+	//ä»¥ä¸‹ä¸¤ç§æƒ…å†µéƒ½éœ€è¦ç”¨åˆ°pçš„å‰ä¸€ä¸ªå…„å¼Ÿï¼Œå› æ­¤éœ€è¦å¾ªç¯æ‰¾åˆ°å‰ä¸€ä¸ªå…„å¼Ÿ
 	pNode target_before = p->parent->firstChild;
 	while (target_before->nextSibling != p)
 	{
 		target_before = target_before->nextSibling;
 	}
 
-	//Êµ¼ÊÉÏÒÔÏÂÁ½ÖÖÇé¿öÓï¾äÒ»Ñù£¬µ«ÎªÁËÒ×¶ÁĞÔ»¹ÊÇ±£³ÖÁ½²¿·Ö
-	if (p->nextSibling == NULL)//delete the last child(É¾³ıµÄÊÇ×îºóÒ»¸öº¢×Ó)
+	//å®é™…ä¸Šä»¥ä¸‹ä¸¤ç§æƒ…å†µè¯­å¥ä¸€æ ·ï¼Œä½†ä¸ºäº†æ˜“è¯»æ€§è¿˜æ˜¯ä¿æŒä¸¤éƒ¨åˆ†
+	if (p->nextSibling == NULL)//delete the last child(åˆ é™¤çš„æ˜¯æœ€åä¸€ä¸ªå­©å­)
 	{
-		target_before->nextSibling = NULL;//Êµ¼ÊÉÏ±¾¾äÓëÏÂÃæµÄ¸³ÖµÓï¾äµÈÍ¬
+		target_before->nextSibling = NULL;//å®é™…ä¸Šæœ¬å¥ä¸ä¸‹é¢çš„èµ‹å€¼è¯­å¥ç­‰åŒ
 
 		Destory(p->firstChild);
 		delete p;
 		return true;
 	}
-	//pÊÇÖĞ¼äµÄÄ³Ò»¸öº¢×Ó
+	//pæ˜¯ä¸­é—´çš„æŸä¸€ä¸ªå­©å­
 	else
 	{
 		target_before->nextSibling = p->nextSibling;
@@ -741,10 +741,10 @@ bool Tree::PrintKid(const pNode p, const std::string& target)
 	}
 	if (p->firstChild == NULL)
 	{
-		print("¸Ã³ÉÔ±Ã»ÓĞº¢×Ó");
+		print("è¯¥æˆå‘˜æ²¡æœ‰å­©å­");
 		return true;
 	}
-	std::cout << target << "µÄµÚÒ»´ú×ÓËïÊÇ£º";
+	std::cout << target << "çš„ç¬¬ä¸€ä»£å­å­™æ˜¯ï¼š";
 
 	pNode current = p->firstChild;
 	while (current != NULL)
@@ -756,6 +756,6 @@ bool Tree::PrintKid(const pNode p, const std::string& target)
 }
 
 
-// Ê÷ÊµÏÖ½áÊø
+// æ ‘å®ç°ç»“æŸ
 
-// --- Àà³ÉÔ±º¯ÊıÊµÏÖ½áÊø ---
+// --- ç±»æˆå‘˜å‡½æ•°å®ç°ç»“æŸ ---
