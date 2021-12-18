@@ -1,5 +1,5 @@
-/*ÏîÄ¿¶ş  Ô¼Éª·òÉúÕßËÀÕßÓÎÏ·*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®äºŒ  çº¦ç‘Ÿå¤«ç”Ÿè€…æ­»è€…æ¸¸æˆ*/
+/* */
 
 #include <iostream>
 #include <iomanip>
@@ -7,7 +7,7 @@
 #define  Cout std::cout
 #define  Cin std::cin
 
-// --- Á´±í³ÉÔ±Àà ---
+// --- é“¾è¡¨æˆå‘˜ç±» ---
 class Passenger
 {
 public:
@@ -20,7 +20,7 @@ public:
 	Passenger(int pos);
 };
 
-// --- Á´±íÀà ---
+// --- é“¾è¡¨ç±» ---
 class LinkList
 {
 public:
@@ -45,8 +45,8 @@ private:
 	Passenger* m_head;
 };
 
-//Êä³öĞÅÏ¢Àà
-class Log//ÓÃÓÚµ÷ÊÔÊä³öĞÅÏ¢µÄÀà,²»ĞèÒªÊµÀı»¯
+//è¾“å‡ºä¿¡æ¯ç±»
+class Log//ç”¨äºè°ƒè¯•è¾“å‡ºä¿¡æ¯çš„ç±»,ä¸éœ€è¦å®ä¾‹åŒ–
 {
 private:
 	Log() = delete;
@@ -67,15 +67,15 @@ public:
 	}
 };
 
-//Àà¶¨Òå½áÊø
+//ç±»å®šä¹‰ç»“æŸ
 
-//---¹¤¾ßº¯Êı£¬ÊäÈë»ù±¾ĞÅÏ¢---
+//---å·¥å…·å‡½æ•°ï¼Œè¾“å…¥åŸºæœ¬ä¿¡æ¯---
 void Input(int& peopleNum, int& initPos, int& deadNum, int& aliveNum);
 
 int main()
 {
 
-	Cout << "ÏÖÓĞNÈËÎ§³ÉÒ»È¦£¬´ÓµÚS¸öÈË¿ªÊ¼±¨Êı£¬±¨MµÄÈË³ö¾Ö£¬ÔÙÓÉÏÂÒ»¸öÈË¿ªÊ¼±¨Êı£¬Èç´ËÑ­»·£¬Ö±µ½Ê£ÏÂK¸öÈËÎªÖ¹\n";
+	Cout << "ç°æœ‰Näººå›´æˆä¸€åœˆï¼Œä»ç¬¬Sä¸ªäººå¼€å§‹æŠ¥æ•°ï¼ŒæŠ¥Mçš„äººå‡ºå±€ï¼Œå†ç”±ä¸‹ä¸€ä¸ªäººå¼€å§‹æŠ¥æ•°ï¼Œå¦‚æ­¤å¾ªç¯ï¼Œç›´åˆ°å‰©ä¸‹Kä¸ªäººä¸ºæ­¢\n";
 	int peopleNum = 0, initPos = 0, deadNum = 0, aliveNum = 0;
 
 	while (true)
@@ -104,9 +104,9 @@ int main()
 				Passenger* keepData = current->m_next;
 				linkList.Remove(current, temp);
 
-				Cout << "µÚ" << std::setw(3) << std::setfill(' ') <<
+				Cout << "ç¬¬" << std::setw(3) << std::setfill(' ') <<
 					std::setiosflags(std::ios::left) << i + 1
-					<< "¸öËÀÕßÎ»ÖÃÊÇ:" << std::setw(4) << temp.m_pos << std::endl;
+					<< "ä¸ªæ­»è€…ä½ç½®æ˜¯:" << std::setw(4) << temp.m_pos << std::endl;
 
 				i++;//when a people die, you can actually go on the next circle
 				count = 1;//start with number one
@@ -120,17 +120,17 @@ int main()
 			}
 			count++;
 		}
-		Cout << "×îºóÊ£ÏÂ" << aliveNum << "ÈË\n";
+		Cout << "æœ€åå‰©ä¸‹" << aliveNum << "äºº\n";
 		linkList.Output();
 
 		while (1)
 		{
-			Cout << "ÊÇ·ñÍË³ö£¿£¨Y/y)--Yes, (N/n)--No\n";
+			Cout << "æ˜¯å¦é€€å‡ºï¼Ÿï¼ˆY/y)--Yes, (N/n)--No\n";
 			char ifExit;
 			Cin >> ifExit;
 			if (ifExit == 'y' || ifExit == 'Y')
 			{
-				std::cout << "°´»Ø³µ¼üÒÔÍË³ö\n";
+				std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 				std::cin.get();
 				std::cin.get();
 				return 0;
@@ -148,51 +148,51 @@ int main()
 	}
 
 
-	std::cout << "°´»Ø³µ¼üÒÔÍË³ö\n";
+	std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 	std::cin.get();
 	std::cin.get();
 
 	return 0;
 }
 
-//---¹¤¾ßº¯ÊıÊµÏÖ---
+//---å·¥å…·å‡½æ•°å®ç°---
 void Input(int& peopleNum, int& initPos, int& deadNum, int& aliveNum)
 {
-	Cout << "ÇëÊäÈëÉúËÀÓÎÏ·µÄ×ÜÈËÊıN£º";
+	Cout << "è¯·è¾“å…¥ç”Ÿæ­»æ¸¸æˆçš„æ€»äººæ•°Nï¼š";
 	Cin >> peopleNum;
 	while (Cin.fail() || peopleNum < 1)
 	{
-		Cout << "ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n";
+		Cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n";
 		Cin.clear();
 		Cin.ignore(65535, '\n');
 		Cin >> peopleNum;
 	}
 
-	Cout << "ÇëÊäÈëÓÎÏ·¿ªÊ¼µÄÎ»ÖÃS£º  ";
+	Cout << "è¯·è¾“å…¥æ¸¸æˆå¼€å§‹çš„ä½ç½®Sï¼š  ";
 	Cin >> initPos;
 	while (Cin.fail() || initPos < 1 || initPos > peopleNum)
 	{
-		Cout << "ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n";
+		Cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n";
 		Cin.clear();
 		Cin.ignore(65535, '\n');
 		Cin >> initPos;
 	}
 
-	Cout << "ÇëÊäÈëËÀÍöÊı×ÖM£º        ";
+	Cout << "è¯·è¾“å…¥æ­»äº¡æ•°å­—Mï¼š        ";
 	Cin >> deadNum;
 	while (Cin.fail() || deadNum < 1)
 	{
-		Cout << "ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n";
+		Cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n";
 		Cin.clear();
 		Cin.ignore(65535, '\n');
 		Cin >> deadNum;
 	}
 
-	Cout << "ÇëÊäÈëÊ£ÓàµÄÉúÕßÈËÊıK£º  ";
+	Cout << "è¯·è¾“å…¥å‰©ä½™çš„ç”Ÿè€…äººæ•°Kï¼š  ";
 	Cin >> aliveNum;
 	while (Cin.fail() || aliveNum < 1 || aliveNum >= peopleNum)
 	{
-		Cout << "ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n";
+		Cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n";
 		Cin.clear();
 		Cin.ignore(65535, '\n');
 		Cin >> aliveNum;
@@ -200,7 +200,7 @@ void Input(int& peopleNum, int& initPos, int& deadNum, int& aliveNum)
 }
 
 
-// --- Á´±íÀàÊµÏÖ ---
+// --- é“¾è¡¨ç±»å®ç° ---
 
 Passenger::Passenger(int pos)
 {
@@ -253,7 +253,7 @@ void LinkList::Output()
 		Log::Warn("The list in the Output function is empty!");
 	}
 
-	Cout << "Ê£ÓàµÄÉúÕßÎ»ÖÃÊÇ: \n";
+	Cout << "å‰©ä½™çš„ç”Ÿè€…ä½ç½®æ˜¯: \n";
 	int count = 0;
 	while (current != m_head)
 	{
@@ -323,4 +323,4 @@ bool LinkList::Remove(Passenger* target, Passenger& x)
 }
 
 
-// --- ÊµÏÖ½áÊø ---
+// --- å®ç°ç»“æŸ ---
