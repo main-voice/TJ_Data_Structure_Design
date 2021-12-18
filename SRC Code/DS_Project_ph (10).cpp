@@ -1,12 +1,12 @@
-/*ÏîÄ¿Æß  ±í´ïÊ½¼ÆËã*/
-/*2053380 ÅíºÆ*/
-//±¾ÏîÄ¿Î´´æ´¢À¨ºÅĞÅÏ¢
+/*é¡¹ç›®ä¸ƒ  è¡¨è¾¾å¼è®¡ç®—*/
+/**/
+//æœ¬é¡¹ç›®æœªå­˜å‚¨æ‹¬å·ä¿¡æ¯
 
 #include <iostream>
 #include <string>
 
 
-#define STL_STACK	false//ÊÇ·ñÊ¹ÓÃSTL µÄ±ê×¼ stack¿â£¬·½±ãdebug
+#define STL_STACK	false//æ˜¯å¦ä½¿ç”¨STL çš„æ ‡å‡† stackåº“ï¼Œæ–¹ä¾¿debug
 #define DEFAULT_EXP true
 #define DEBUG		false
 
@@ -70,7 +70,7 @@ namespace myStack
 	template<typename T, int* length>
 	inline bool stack<T, length>::pop()
 	{
-		if (!empty())//Î´¿Õ²Å¿ÉÒÔ³öÕ»
+		if (!empty())//æœªç©ºæ‰å¯ä»¥å‡ºæ ˆ
 		{
 			m_top--;
 			return true;
@@ -98,9 +98,9 @@ using namespace myStack;
 #endif // STL_STACK or user type
 
 int number_amount;
-int opera_amount;//Ö®ËùÒÔÓÃÈ«¾Ö±äÁ¿£¬ÊÇÒòÎª¾Ö²¿±äÁ¿ÎŞ·¨ÓÃ×÷Êı×é´óĞ¡µÄ³õÊ¼»¯ĞÅÏ¢
+int opera_amount;//ä¹‹æ‰€ä»¥ç”¨å…¨å±€å˜é‡ï¼Œæ˜¯å› ä¸ºå±€éƒ¨å˜é‡æ— æ³•ç”¨ä½œæ•°ç»„å¤§å°çš„åˆå§‹åŒ–ä¿¡æ¯
 
-//---¹¤¾ßº¯ÊıÉùÃ÷---
+//---å·¥å…·å‡½æ•°å£°æ˜---
 void inline print(const char* message) {
 	std::cout << message;
 }
@@ -108,17 +108,17 @@ bool inline isNumber(char x) {
 	return x <= '9' && x >= '0';
 }
 
-//×Ö·û´®strµÄµÚindex¸öÎ»ÖÃÊÇ-£¬¼ì²â¸Ã-´ú±í¸ºÊı»¹ÊÇ¼õºÅ
+//å­—ç¬¦ä¸²strçš„ç¬¬indexä¸ªä½ç½®æ˜¯-ï¼Œæ£€æµ‹è¯¥-ä»£è¡¨è´Ÿæ•°è¿˜æ˜¯å‡å·
 bool isNegative(const std::string& str, const int index);
 
-//¼ÆËãÒ»¸ö×Ö·û´®ÀïÃæÓĞ¶àÉÙÊı×Ö·ûºÅ(ÒÑ³É¹¦´¦Àí¶àÎ»Êı£¬¸ºÊıÓëÕıÊıÍ³Ò»£©
+//è®¡ç®—ä¸€ä¸ªå­—ç¬¦ä¸²é‡Œé¢æœ‰å¤šå°‘æ•°å­—ç¬¦å·(å·²æˆåŠŸå¤„ç†å¤šä½æ•°ï¼Œè´Ÿæ•°ä¸æ­£æ•°ç»Ÿä¸€ï¼‰
 int countNumber(const std::string& str);
-//¼ÆËãÒ»¸ö×Ö·û´®ÀïÃæÓĞ¶àÉÙ·ÇÊı×Ö·ûºÅ
+//è®¡ç®—ä¸€ä¸ªå­—ç¬¦ä¸²é‡Œé¢æœ‰å¤šå°‘éæ•°å­—ç¬¦å·
 int countOpera(const std::string& str);
-//---¹¤¾ßº¯ÊıÉùÃ÷½áÊø---
+//---å·¥å…·å‡½æ•°å£°æ˜ç»“æŸ---
 
 
-//---¶ş²æÊ÷Àà¶¨Òå---
+//---äºŒå‰æ ‘ç±»å®šä¹‰---
 class BinTreeNode
 {
 	using pNode = BinTreeNode*;
@@ -179,7 +179,7 @@ private:
 	pNode m_root;
 };
 
-//---¶ş²æÊ÷Àà¶¨Òå½áÊø---
+//---äºŒå‰æ ‘ç±»å®šä¹‰ç»“æŸ---
 
 
 int main()
@@ -189,19 +189,19 @@ int main()
 
 #if DEFAULT_EXP
 	std::string exp = "5+3*(7-8/2)+6";
-	print("ÊÇ·ñÊ¹ÓÃÄ¬ÈÏ×Ö·û´®£¿(¼´5+3*(7-8/2)+6)\n(y/Y --yes)\n");
+	print("æ˜¯å¦ä½¿ç”¨é»˜è®¤å­—ç¬¦ä¸²ï¼Ÿ(å³5+3*(7-8/2)+6)\n(y/Y --yes)\n");
 #endif // DEFAULT_EXP
 
 	//std::string exp = "((5000)+378*((-7)-(8/2)+(-6)))";
-	//²âÊÔÑùÀı£¬Í¨¹ı
+	//æµ‹è¯•æ ·ä¾‹ï¼Œé€šè¿‡
 
 #if DEFAULT_EXP
-	{//±ÜÃâchoiceÃüÃû³åÍ»ÎÊÌâ£¬¾¡Á¿¼õÉÙ¾Ö²¿±äÁ¿µÄlife time
+	{//é¿å…choiceå‘½åå†²çªé—®é¢˜ï¼Œå°½é‡å‡å°‘å±€éƒ¨å˜é‡çš„life time
 		char choice;
 		std::cin >> choice;
 		if ('y' != choice && 'Y' != choice)
 		{
-			print("ÇëÊäÈë±í´ïÊ½(×¢£º±í´ïÊ½ÖĞ²»Ó¦º¬ÓĞ¿Õ¸ñ)\n");
+			print("è¯·è¾“å…¥è¡¨è¾¾å¼(æ³¨ï¼šè¡¨è¾¾å¼ä¸­ä¸åº”å«æœ‰ç©ºæ ¼)\n");
 			std::cin >> exp;
 		}
 	}
@@ -212,16 +212,16 @@ int main()
 
 #if DEBUG
 	std::cout << exp << std::endl;
-	std::cout << "Êı×ÖÊıÁ¿£º" << number_amount << "\n";
-	std::cout << "ÔËËã·ûÊıÁ¿£º" << opera_amount << "\n";
+	std::cout << "æ•°å­—æ•°é‡ï¼š" << number_amount << "\n";
+	std::cout << "è¿ç®—ç¬¦æ•°é‡ï¼š" << opera_amount << "\n";
 #endif
 
 #if STL_STACK
 	std::stack<char> Operator;
-	std::stack<pNode> StackNumber;//²Ù×÷Êı
+	std::stack<pNode> StackNumber;//æ“ä½œæ•°
 #else
 	myStack::stack<char, &opera_amount> Operator;
-	myStack::stack<pNode, &number_amount> StackNumber;//²Ù×÷Êı
+	myStack::stack<pNode, &number_amount> StackNumber;//æ“ä½œæ•°
 #endif // STL_STACK
 
 	const int length = exp.length();
@@ -229,13 +229,13 @@ int main()
 
 	{
 		std::string number = "";
-		if (exp[0] == '-')//µÚÒ»¸öÊı×ÖÊÇ¸ºÊı
+		if (exp[0] == '-')//ç¬¬ä¸€ä¸ªæ•°å­—æ˜¯è´Ÿæ•°
 		{
 			{
 				std::string temp = "-";
 				number = temp + number;
 			}
-			index++;//µÚÒ»¸öÊı×Ö×Ö·û
+			index++;//ç¬¬ä¸€ä¸ªæ•°å­—å­—ç¬¦
 			while (isNumber(exp[index]))
 			{
 				std::string temp = "?";
@@ -260,21 +260,21 @@ int main()
 			tag = 1;
 			index++;
 		}
-		if (tag == 1)//±¾´Î´¦ÀíÒ»¸öÊı×Ö£¬Ö±½Ó½«Êı×ÖÈëÕ»¼´¿É
+		if (tag == 1)//æœ¬æ¬¡å¤„ç†ä¸€ä¸ªæ•°å­—ï¼Œç›´æ¥å°†æ•°å­—å…¥æ ˆå³å¯
 		{
 			pNode temp = new BinTreeNode(number);//************
 			StackNumber.push(temp);
 			continue;
 		}
 
-		if (Operator.empty())//µÚÒ»´Î½øÕ»µÄ²Ù×÷·û  °üÀ¨Õ»¿Õºó¿ÉÄÜÒ²»á½øÈë´Ë·ÖÖ§Óï¾ä
+		if (Operator.empty())//ç¬¬ä¸€æ¬¡è¿›æ ˆçš„æ“ä½œç¬¦  åŒ…æ‹¬æ ˆç©ºåå¯èƒ½ä¹Ÿä¼šè¿›å…¥æ­¤åˆ†æ”¯è¯­å¥
 		{
 			Operator.push(exp[index]);
 			index++;
 			continue;
 		}
 
-		//µÚÈıÖÖÇé¿ö£¬ĞèÒª½øĞĞ²Ù×÷·ûÓÅÏÈ¼¶µÄ±È½Ï
+		//ç¬¬ä¸‰ç§æƒ…å†µï¼Œéœ€è¦è¿›è¡Œæ“ä½œç¬¦ä¼˜å…ˆçº§çš„æ¯”è¾ƒ
 		char stack_top = Operator.top();
 
 		switch (exp[index])
@@ -284,9 +284,9 @@ int main()
 		{
 			if (isNegative(exp, index))
 			{
-				//std::cout << "\nÊÇ¸ºÊı\n";
+				//std::cout << "\næ˜¯è´Ÿæ•°\n";
 				std::string tag = "-";
-				number = tag + number;//±ä³É¸ºÊı£¨ÈâÑÛ¸Ğ¾õ£©
+				number = tag + number;//å˜æˆè´Ÿæ•°ï¼ˆè‚‰çœ¼æ„Ÿè§‰ï¼‰
 				index++;
 				while (isNumber(exp[index]))
 				{
@@ -312,7 +312,7 @@ int main()
 				pNode temp_right = StackNumber.top();
 				StackNumber.pop();
 				pNode temp_left = StackNumber.top();
-				StackNumber.pop();//·Ö±ğµÃµ½¸ù½ÚµãµÄ×óº¢×ÓÓëÓÒº¢×Ó
+				StackNumber.pop();//åˆ†åˆ«å¾—åˆ°æ ¹èŠ‚ç‚¹çš„å·¦å­©å­ä¸å³å­©å­
 
 				std::string subRoot = ".";
 				subRoot[0] = stack_top;
@@ -321,7 +321,7 @@ int main()
 					BinTreeNode(subRoot, temp_left, temp_right);
 
 				StackNumber.push(newRoot);
-				Operator.pop();//Ô­ÓĞµÄ¶¥²¿½ÚµãÏÈ³öÕ»
+				Operator.pop();//åŸæœ‰çš„é¡¶éƒ¨èŠ‚ç‚¹å…ˆå‡ºæ ˆ
 				//Operator.push(a[index]);
 			}
 			break;
@@ -329,7 +329,7 @@ int main()
 		case '*':
 		case '/':
 		{
-			if (stack_top == '+' || stack_top == '-' || stack_top == '(')//Õ»¶¥ÓÅÏÈ¼¶µÍ£¬ÈëÕ»
+			if (stack_top == '+' || stack_top == '-' || stack_top == '(')//æ ˆé¡¶ä¼˜å…ˆçº§ä½ï¼Œå…¥æ ˆ
 			{
 				Operator.push(exp[index]);
 			}
@@ -338,7 +338,7 @@ int main()
 				pNode temp_right = StackNumber.top();
 				StackNumber.pop();
 				pNode temp_left = StackNumber.top();
-				StackNumber.pop();//·Ö±ğµÃµ½¸ù½ÚµãµÄ×óº¢×ÓÓëÓÒº¢×Ó
+				StackNumber.pop();//åˆ†åˆ«å¾—åˆ°æ ¹èŠ‚ç‚¹çš„å·¦å­©å­ä¸å³å­©å­
 
 				std::string subRoot = ".";
 				subRoot[0] = stack_top;
@@ -346,7 +346,7 @@ int main()
 					BinTreeNode(subRoot, temp_left, temp_right);
 
 				StackNumber.push(newRoot);
-				Operator.pop();//Ô­ÓĞµÄ¶¥²¿½ÚµãÏÈ³öÕ»
+				Operator.pop();//åŸæœ‰çš„é¡¶éƒ¨èŠ‚ç‚¹å…ˆå‡ºæ ˆ
 				Operator.push(exp[index]);
 			}
 			index++;
@@ -361,12 +361,12 @@ int main()
 		case ')':
 		{
 			char current = Operator.top();
-			while (current != '(')//×óÀ¨ºÅºÍÓÒÀ¨ºÅÖ®¼ä¿ÉÄÜ»áÓĞ¶à¸öÔËËã·û£¬Òò´ËĞèÒªÑ­»·´¦Àí
+			while (current != '(')//å·¦æ‹¬å·å’Œå³æ‹¬å·ä¹‹é—´å¯èƒ½ä¼šæœ‰å¤šä¸ªè¿ç®—ç¬¦ï¼Œå› æ­¤éœ€è¦å¾ªç¯å¤„ç†
 			{
 				pNode temp_right = StackNumber.top();
 				StackNumber.pop();
 				pNode temp_left = StackNumber.top();
-				StackNumber.pop();//·Ö±ğµÃµ½¸ù½ÚµãµÄ×óº¢×ÓÓëÓÒº¢×Ó
+				StackNumber.pop();//åˆ†åˆ«å¾—åˆ°æ ¹èŠ‚ç‚¹çš„å·¦å­©å­ä¸å³å­©å­
 
 				std::string subRoot = ".";
 				subRoot[0] = current;
@@ -377,13 +377,13 @@ int main()
 				Operator.pop();
 				current = Operator.top();
 			}
-			Operator.pop();//°Ñ×óÀ¨ºÅ³öÕ»
+			Operator.pop();//æŠŠå·¦æ‹¬å·å‡ºæ ˆ
 			index++;
 			break;
 		}
 		default:
 		{
-			print("´íÎó×Ö·û: ");
+			print("é”™è¯¯å­—ç¬¦: ");
 			std::cout << exp[index];
 			index++;
 		}
@@ -393,7 +393,7 @@ int main()
 	BinTree* tree = nullptr;
 
 	
-	if (Operator.empty() && StackNumber.size() == 1)//½öÓĞÁ½¸öÊı×ÖÓëÒ»¸öÔËËã·û/ »òÕß½öÓĞÒ»¸öÊı×ÖÊ±»áÖ´ĞĞ´Ë·ÖÖ§
+	if (Operator.empty() && StackNumber.size() == 1)//ä»…æœ‰ä¸¤ä¸ªæ•°å­—ä¸ä¸€ä¸ªè¿ç®—ç¬¦/ æˆ–è€…ä»…æœ‰ä¸€ä¸ªæ•°å­—æ—¶ä¼šæ‰§è¡Œæ­¤åˆ†æ”¯
 	{
 		tree = new BinTree((StackNumber.top()));
 		StackNumber.pop();
@@ -403,7 +403,7 @@ int main()
 		pNode temp_right = StackNumber.top();
 		StackNumber.pop();
 		pNode temp_left = StackNumber.top();
-		StackNumber.pop();//·Ö±ğµÃµ½¸ù½ÚµãµÄ×óº¢×ÓÓëÓÒº¢×Ó
+		StackNumber.pop();//åˆ†åˆ«å¾—åˆ°æ ¹èŠ‚ç‚¹çš„å·¦å­©å­ä¸å³å­©å­
 
 		char stack_top = Operator.top();
 		std::string temp = ".";
@@ -415,19 +415,19 @@ int main()
 		tree = new BinTree(newRoot);
 	}
 
-	print("²¨À¼±í´ïÊ½£¨ºóĞò±éÀú£©\n");
+	print("æ³¢å…°è¡¨è¾¾å¼ï¼ˆååºéå†ï¼‰\n");
 	tree->postOrder(tree->getRoot());
 	print("\n\n");
 
-	print("ÖĞĞò±í´ïÊ½£¨ÖĞĞò±éÀú£©\n");
+	print("ä¸­åºè¡¨è¾¾å¼ï¼ˆä¸­åºéå†ï¼‰\n");
 	tree->InOrder(tree->getRoot());
 	print("\n\n");
 
-	print("Äæ²¨À¼±í´ïÊ½£¨Ç°Ğò±éÀú£©\n");
+	print("é€†æ³¢å…°è¡¨è¾¾å¼ï¼ˆå‰åºéå†ï¼‰\n");
 	tree->preOrder(tree->getRoot());
 	print("\n\n");
 
-	std::cout << "°´»Ø³µ¼üÒÔÍË³ö";
+	std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º";
 	std::cin.get();
 	std::cin.get();
 
@@ -439,7 +439,7 @@ int main()
 }
 
 
-//¹¤¾ßº¯ÊıÊµÏÖ
+//å·¥å…·å‡½æ•°å®ç°
 bool isNegative(const std::string& str, const int index)//the index should represent the negative
 {
 	const bool result = str[index] == '-'
@@ -449,7 +449,7 @@ bool isNegative(const std::string& str, const int index)//the index should repre
 	return result;
 }
 
-//¼ÆËãÒ»¸ö×Ö·û´®ÀïÃæÓĞ¶àÉÙÊı×Ö·ûºÅ(ÒÑ³É¹¦´¦Àí¶àÎ»Êı£¬¸ºÊıÓëÕıÊıÍ³Ò»£©
+//è®¡ç®—ä¸€ä¸ªå­—ç¬¦ä¸²é‡Œé¢æœ‰å¤šå°‘æ•°å­—ç¬¦å·(å·²æˆåŠŸå¤„ç†å¤šä½æ•°ï¼Œè´Ÿæ•°ä¸æ­£æ•°ç»Ÿä¸€ï¼‰
 int countNumber(const std::string& str)
 {
 	int count = 0;
@@ -491,4 +491,4 @@ int countOpera(const std::string& str)
 
 	return count;
 }
-//¹¤¾ßº¯ÊıÊµÏÖ½áÊø
+//å·¥å…·å‡½æ•°å®ç°ç»“æŸ
