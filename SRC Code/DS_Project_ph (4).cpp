@@ -1,5 +1,5 @@
-/*ÏîÄ¿Ò»  ¿¼ÊÔ±¨ÃûÏµÍ³*/
-/*2053380 ÅíºÆ*/
+/*é¡¹ç›®ä¸€  è€ƒè¯•æŠ¥åç³»ç»Ÿ*/
+/**/
 
 
 #include <string>
@@ -8,7 +8,7 @@
 
 class Student;
 
-//Á´±í½ÚµãÀà
+//é“¾è¡¨èŠ‚ç‚¹ç±»
 template <class TypeName>
 struct ListNode
 {
@@ -22,7 +22,7 @@ public:
 	ListNode<TypeName>* m_next;
 };
 
-//Á´±íÀà
+//é“¾è¡¨ç±»
 template <class TypeName>
 class List
 {
@@ -66,8 +66,8 @@ template<>
 void List<Student>::Revise();
 
 
-//Êä³öĞÅÏ¢Àà
-class Log//ÓÃÓÚµ÷ÊÔÊä³öĞÅÏ¢µÄÀà,²»ĞèÒªÊµÀı»¯
+//è¾“å‡ºä¿¡æ¯ç±»
+class Log//ç”¨äºè°ƒè¯•è¾“å‡ºä¿¡æ¯çš„ç±»,ä¸éœ€è¦å®ä¾‹åŒ–
 {
 private:
 	Log() = delete;
@@ -88,7 +88,7 @@ public:
 	}
 };
 
-//Ñ§ÉúÀà
+//å­¦ç”Ÿç±»
 class Student
 {
 private:
@@ -126,7 +126,7 @@ public:
 	bool operator==(const Student& x);
 };
 
-// --- ¹¤¾ßº¯ÊıÉùÃ÷¿ªÊ¼ ---
+// --- å·¥å…·å‡½æ•°å£°æ˜å¼€å§‹ ---
 static bool checkNumber(int& input);
 
 static bool checkChoice(int& input);
@@ -136,7 +136,7 @@ class List;
 template <class T>
 bool checkInsert(int& pos, const List<T>& list);
 
-// --- ¹¤¾ßº¯ÊıÉùÃ÷½áÊø
+// --- å·¥å…·å‡½æ•°å£°æ˜ç»“æŸ
 
 
  /*########## MAIN ############*/
@@ -146,7 +146,7 @@ int main()
 	ListNode<Student> listNode;
 	Student input_stud;
 
-	std::cout << std::endl << "Ê×ÏÈÇë½¨Á¢¿¼ÉúĞÅÏ¢ÏµÍ³ " << std::endl;
+	std::cout << std::endl << "é¦–å…ˆè¯·å»ºç«‹è€ƒç”Ÿä¿¡æ¯ç³»ç»Ÿ " << std::endl;
 	list.Input();
 
 	enum menuDetail { exit, insert, delete_stu, find, modify, count };
@@ -154,24 +154,24 @@ int main()
 
 	while (1)
 	{
-		std::cout << "ÇëÑ¡ÔñÄúÒª½øĞĞµÄ²Ù×÷(1Îª²åÈë£¬2ÎªÉ¾³ı£¬3Îª²éÕÒ£¬4ÎªĞŞ¸Ä£¬5ÎªÍ³¼Æ£¬0ÎªÈ¡Ïû²Ù×÷)" << std::endl;
+		std::cout << "è¯·é€‰æ‹©æ‚¨è¦è¿›è¡Œçš„æ“ä½œ(1ä¸ºæ’å…¥ï¼Œ2ä¸ºåˆ é™¤ï¼Œ3ä¸ºæŸ¥æ‰¾ï¼Œ4ä¸ºä¿®æ”¹ï¼Œ5ä¸ºç»Ÿè®¡ï¼Œ0ä¸ºå–æ¶ˆæ“ä½œ)" << std::endl;
 		std::cin >> choose;
 		checkChoice(choose);
 
 		switch (choose) {
 		case insert: {
-			std::cout << "ÊäÈë¸ÃÑ§ÉúµÄ²åÈëÎ»ÖÃ" << std::endl;
+			std::cout << "è¾“å…¥è¯¥å­¦ç”Ÿçš„æ’å…¥ä½ç½®" << std::endl;
 			int pos = 0;
 			std::cin >> pos;
 			checkInsert(pos, list);
 
-			std::cout << "ÇëÒÀ´ÎÊäÈëÑ§Éú¿¼ºÅ£¬ĞÕÃû£¬ĞÔ±ğ£¬ÄêÁäÒÔ¼°±¨¿¼Àà±ğ" << std::endl;
+			std::cout << "è¯·ä¾æ¬¡è¾“å…¥å­¦ç”Ÿè€ƒå·ï¼Œå§“åï¼Œæ€§åˆ«ï¼Œå¹´é¾„ä»¥åŠæŠ¥è€ƒç±»åˆ«" << std::endl;
 			std::cin >> input_stud;
 			//input the information of the student
 			auto Stud = new Student(input_stud);
 
 			while (list.Find(*Stud)) {
-				std::cout << "ÒÑ¾­´æÔÚ¸Ã¿¼ºÅµÄÑ§Éú£¬ÇëÖØĞÂÊäÈë\n" << std::endl;
+				std::cout << "å·²ç»å­˜åœ¨è¯¥è€ƒå·çš„å­¦ç”Ÿï¼Œè¯·é‡æ–°è¾“å…¥\n" << std::endl;
 				std::cin >> input_stud;
 				auto temp = Stud;
 				delete temp;
@@ -189,18 +189,18 @@ int main()
 		}
 
 		case delete_stu: {
-			std::cout << "ÇëÊäÈëÒªÉ¾³ıµÄ¿¼ÉúµÄ¿¼ºÅ" << std::endl;
+			std::cout << "è¯·è¾“å…¥è¦åˆ é™¤çš„è€ƒç”Ÿçš„è€ƒå·" << std::endl;
 			int num = -1;
 			std::cin >> num;
 			checkNumber(num);
 			Student temp(num);
 			auto target = list.Find(temp, num);//can find the correct target
 			if (target == NULL) {
-				std::cout << "¸ÃÑ§Éú²»´æÔÚ£¡\n";
+				std::cout << "è¯¥å­¦ç”Ÿä¸å­˜åœ¨ï¼\n";
 				break;
 			}
 			list.Remove(num, temp);
-			std::cout << "É¾³ıµÄÑ§ÉúĞÅÏ¢Îª£º\n" << temp << std::endl;
+			std::cout << "åˆ é™¤çš„å­¦ç”Ÿä¿¡æ¯ä¸ºï¼š\n" << temp << std::endl;
 			list.Output();
 			break;
 		}
@@ -212,25 +212,25 @@ int main()
 		}
 		case find:
 		{
-			std::cout << "ÇëÊäÈëÒª²éÕÒµÄÑ§ÉúµÄ¿¼ºÅ\n";
+			std::cout << "è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„å­¦ç”Ÿçš„è€ƒå·\n";
 			int num = -1;
 			std::cin >> num;
 			checkNumber(num);
 			Student temp(num);
 			auto target = list.Find(temp);//can find the correct target
 			if (target == NULL) {
-				std::cout << "¸ÃÑ§Éú²»´æÔÚ£¡\n";
+				std::cout << "è¯¥å­¦ç”Ÿä¸å­˜åœ¨ï¼\n";
 				break;
 			}
 			else {
-				std::cout << "¿¼ºÅ    ĞÕÃû    ĞÔ±ğ    ÄêÁä    ±¨¿¼Àà±ğ\n";
+				std::cout << "è€ƒå·    å§“å    æ€§åˆ«    å¹´é¾„    æŠ¥è€ƒç±»åˆ«\n";
 				std::cout << target->m_data << std::endl;
 			}
 			break;
 		}
 		case exit: {
 
-			std::cout << "°´»Ø³µ¼üÒÔÍË³ö\n";
+			std::cout << "æŒ‰å›è½¦é”®ä»¥é€€å‡º\n";
 			std::cin.get();
 			std::cin.get();
 
@@ -248,10 +248,10 @@ int main()
 }
 
 
-// -- ¼ì²âº¯ÊıÊµÏÖ ---
+// -- æ£€æµ‹å‡½æ•°å®ç° ---
 static bool checkNumber(int& input) {
 	while (std::cin.fail() || input < 0) {
-		std::cout << "´íÎóÊäÈë!ÇëÖØĞÂÊäÈë\n";
+		std::cout << "é”™è¯¯è¾“å…¥!è¯·é‡æ–°è¾“å…¥\n";
 		std::cin.clear();
 		std::cin.ignore(65535, '\n');
 		std::cin >> input;
@@ -263,7 +263,7 @@ static bool checkNumber(int& input) {
 #define MaxChoice 7
 static bool checkChoice(int& input) {
 	while (std::cin.fail() || input < 0 || input > MaxChoice) {
-		std::cout << "´íÎóÊäÈë!ÇëÖØĞÂÊäÈë\n";
+		std::cout << "é”™è¯¯è¾“å…¥!è¯·é‡æ–°è¾“å…¥\n";
 		std::cin.clear();
 		std::cin.ignore(65535, '\n');
 		std::cin >> input;
@@ -277,7 +277,7 @@ class List;
 template <class T>
 bool checkInsert(int& pos, const List<T>& list) {
 	while (std::cin.fail() || pos < 0 || pos > list.Length() + 1) {
-		std::cout << "´íÎóÊäÈë!ÇëÖØĞÂÊäÈë\n";
+		std::cout << "é”™è¯¯è¾“å…¥!è¯·é‡æ–°è¾“å…¥\n";
 		std::cin.clear();
 		std::cin.ignore(65535, '\n');
 		std::cin >> pos;
@@ -285,10 +285,10 @@ bool checkInsert(int& pos, const List<T>& list) {
 	return true;
 }
 
-// --- ÊµÏÖ½áÊø ---
+// --- å®ç°ç»“æŸ ---
 
 
-// --- Á´±íÊµÏÖ ---
+// --- é“¾è¡¨å®ç° ---
 
 
 
@@ -532,17 +532,17 @@ void List<TypeName>::Input()
 	TypeName value;
 	ListNode<TypeName>* last = head, *newNode = nullptr;
 
-	std::cout << "ÇëÊäÈëÑ§ÉúÈËÊı" << std::endl;
+	std::cout << "è¯·è¾“å…¥å­¦ç”Ÿäººæ•°" << std::endl;
 	std::cin >> stu_number;
 
 	while (std::cin.fail() || stu_number <= 0) {
-		std::cout << "´íÎóÊäÈë!ÇëÖØĞÂÊäÈë\n";
+		std::cout << "é”™è¯¯è¾“å…¥!è¯·é‡æ–°è¾“å…¥\n";
 		std::cin.clear();
 		std::cin.ignore(65535, '\n');
 		std::cin >> stu_number;
 	}
 
-	std::cout << "ÇëÒÀ´ÎÊäÈë¿¼ÉúµÄ¿¼ºÅ£¬ĞÕÃû£¬ĞÔ±ğ£¬ÄêÁä¼°±¨¿¼Àà±ğ£º\n";
+	std::cout << "è¯·ä¾æ¬¡è¾“å…¥è€ƒç”Ÿçš„è€ƒå·ï¼Œå§“åï¼Œæ€§åˆ«ï¼Œå¹´é¾„åŠæŠ¥è€ƒç±»åˆ«ï¼š\n";
 
 	for (int i = 0; i < stu_number; i++) {
 		std::cin >> value;
@@ -561,7 +561,7 @@ void List<TypeName>::Input()
 template<class TypeName>
 void List<TypeName>::Output()
 {
-	std::cout << "¿¼ºÅ    " << "ĞÕÃû    " << "ĞÔ±ğ    " << "ÄêÁä    " << "±¨¿¼Àà±ğ" << std::endl;
+	std::cout << "è€ƒå·    " << "å§“å    " << "æ€§åˆ«    " << "å¹´é¾„    " << "æŠ¥è€ƒç±»åˆ«" << std::endl;
 	ListNode<TypeName>* current = head->m_next;
 	while (current != NULL) {
 		std::cout << current->m_data << std::endl;
@@ -577,20 +577,20 @@ void List<Student>::Revise()
 	using namespace std;
 
 	char YesOrNo = 'N';
-	std::cout << "ÇëÊäÈëÒª½øĞĞĞŞ¸ÄĞÅÏ¢µÄÑ§ÉúµÄ¿¼ºÅ\n(×¢£º½öÖ§³ÖĞŞ¸ÄĞÕÃû ĞÔ±ğ ÄêÁä ±¨¿¼Àà±ğ)\n";
+	std::cout << "è¯·è¾“å…¥è¦è¿›è¡Œä¿®æ”¹ä¿¡æ¯çš„å­¦ç”Ÿçš„è€ƒå·\n(æ³¨ï¼šä»…æ”¯æŒä¿®æ”¹å§“å æ€§åˆ« å¹´é¾„ æŠ¥è€ƒç±»åˆ«)\n";
 	int num = -1;
 	std::cin >> num;
 	checkNumber(num);
 	Student temp(num);
 	auto target = this->Find(temp);//can find the correct target
 	if (target == NULL) {
-		cout << "¸ÃÑ§Éú²»´æÔÚ£¡\n";
+		cout << "è¯¥å­¦ç”Ÿä¸å­˜åœ¨ï¼\n";
 		return;
 	}
 
 	if (1)//if modify the sudent's name
 	{
-		std::cout << "ÇëÎÊÊÇ·ñĞŞ¸ÄĞÕÃû Y(Yes) N(No)";
+		std::cout << "è¯·é—®æ˜¯å¦ä¿®æ”¹å§“å Y(Yes) N(No)";
 		std::cin >> YesOrNo;
 
 		if (YesOrNo == 'y' || YesOrNo == 'n') {
@@ -600,16 +600,16 @@ void List<Student>::Revise()
 		const bool flag = (YesOrNo == 'Y' ? true : false);
 		if (flag) {
 			string stu_name;
-			cout << "ÇëÊäÈëĞŞ¸ÄºóµÄĞÕÃû£º";
+			cout << "è¯·è¾“å…¥ä¿®æ”¹åçš„å§“åï¼š";
 			cin >> stu_name;
 			(target->m_data).setStuName(stu_name);
-			cout << "ĞŞ¸Äºó:" << target->m_data << endl;
+			cout << "ä¿®æ”¹å:" << target->m_data << endl;
 		}
 	}
 
 	if (2)//if modify the sudent's sex
 	{
-		cout << "ÇëÎÊÊÇ·ñĞŞ¸ÄĞÔ±ğ Y(Yes) N(No)";
+		cout << "è¯·é—®æ˜¯å¦ä¿®æ”¹æ€§åˆ« Y(Yes) N(No)";
 		cin >> YesOrNo;
 
 		if (YesOrNo == 'y' || YesOrNo == 'n') {
@@ -619,16 +619,16 @@ void List<Student>::Revise()
 		const bool flag = (YesOrNo == 'Y' ? true : false);
 		if (flag) {
 			std::string sex;
-			cout << "ÇëÊäÈëĞŞ¸ÄºóµÄĞÔ±ğ£º";
+			cout << "è¯·è¾“å…¥ä¿®æ”¹åçš„æ€§åˆ«ï¼š";
 			std::cin >> sex;
 			target->m_data.setSex(sex);
-			std::cout << "ĞŞ¸Äºó:" << target->m_data << std::endl;
+			std::cout << "ä¿®æ”¹å:" << target->m_data << std::endl;
 		}
 	}
 
 	if (3)//if modify the sudent's sex
 	{
-		std::cout << "ÇëÎÊÊÇ·ñĞŞ¸ÄÄêÁä Y(Yes) N(No)";
+		std::cout << "è¯·é—®æ˜¯å¦ä¿®æ”¹å¹´é¾„ Y(Yes) N(No)";
 		std::cin >> YesOrNo;
 
 		if (YesOrNo == 'y' || YesOrNo == 'n') {
@@ -638,17 +638,17 @@ void List<Student>::Revise()
 		const bool flag = (YesOrNo == 'Y' ? true : false);
 		if (flag) {
 			int age = -1;
-			std::cout << "ÇëÊäÈëĞŞ¸ÄºóµÄÄêÁä£º";
+			std::cout << "è¯·è¾“å…¥ä¿®æ”¹åçš„å¹´é¾„ï¼š";
 			std::cin >> age;
 			checkNumber(age);
 			target->m_data.setAge(age);
-			std::cout << "ĞŞ¸Äºó:" << target->m_data << std::endl;
+			std::cout << "ä¿®æ”¹å:" << target->m_data << std::endl;
 		}
 	}
 
 	if (4)//if modify the sudent's sex
 	{
-		cout << "ÇëÎÊÊÇ·ñĞŞ¸Ä±¨¿¼Àà±ğ Y(Yes) N(No)";
+		cout << "è¯·é—®æ˜¯å¦ä¿®æ”¹æŠ¥è€ƒç±»åˆ« Y(Yes) N(No)";
 		cin >> YesOrNo;
 
 		if (YesOrNo == 'y' || YesOrNo == 'n') {
@@ -658,10 +658,10 @@ void List<Student>::Revise()
 		const bool flag = (YesOrNo == 'Y' ? true : false);
 		if (flag) {
 			std::string exam_name;
-			std::cout << "ÇëÊäÈëĞŞ¸ÄºóµÄ±¨¿¼Àà±ğ";
+			std::cout << "è¯·è¾“å…¥ä¿®æ”¹åçš„æŠ¥è€ƒç±»åˆ«";
 			std::cin >> exam_name;
 			target->m_data.setExamName(exam_name);
-			std::cout << "ĞŞ¸Äºó:" << target->m_data << std::endl;
+			std::cout << "ä¿®æ”¹å:" << target->m_data << std::endl;
 		}
 	}
 }
@@ -692,10 +692,10 @@ List<TypeName>& List<TypeName>::operator=(List<TypeName>& x)
 }
 
 
-//Á´±íÊµÏÖ½áÊø
+//é“¾è¡¨å®ç°ç»“æŸ
 
 
-// --- Ñ§ÉúÀàÊµÏÖ ---
+// --- å­¦ç”Ÿç±»å®ç° ---
 using String = std::string;
 
 void Student::setExamNumber(int num)
@@ -777,7 +777,7 @@ std::istream& operator>>(std::istream& input, Student& S)
 	cin >> examName;
 #define MaxExamNumber 2147483647
 	while (cin.fail() || examNumber < 0 || examNumber > MaxExamNumber) {
-		cout << "ÊäÈë¸ñÊ½´íÎó£¬ÇëÖØĞÂÊäÈë\n";
+		cout << "è¾“å…¥æ ¼å¼é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n";
 		cin.clear();
 		cin.ignore(65535, '\n');
 
@@ -797,4 +797,4 @@ std::istream& operator>>(std::istream& input, Student& S)
 
 	return input;
 }
-// --- Ñ§ÉúÀàÊµÏÖ½áÊø ---
+// --- å­¦ç”Ÿç±»å®ç°ç»“æŸ ---
